@@ -26,7 +26,7 @@ export function ProductCard({ product }: ProductCardProps) {
           alt={product.image.alt}
           width={640}
           height={800}
-          className="aspect-[9/16] w-full bg-[var(--color-background)] object-contain transition duration-500 group-hover:scale-105 sm:aspect-[4/5]"
+          className="aspect-[4/5] w-full bg-[var(--color-background)] object-cover object-center transition duration-500 group-hover:scale-105 sm:aspect-[4/3]"
         />
         {product.category ? (
           <span className="absolute left-2 top-2 hidden rounded-full bg-[var(--color-surface)]/90 px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-[0.12em] text-[var(--color-primary)] backdrop-blur sm:left-4 sm:top-4 sm:inline-flex sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.18em]">
@@ -46,7 +46,7 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           ) : null}
         </div>
-        <p className="mt-2 line-clamp-2 min-h-0 text-xs leading-5 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7">
+        <p className="mt-2 line-clamp-4 min-h-0 text-[0.7rem] leading-4 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7">
           {product.description}
         </p>
         <ButtonLink className="mt-3 w-full px-3 py-2 text-xs sm:mt-5 sm:px-5 sm:py-3 sm:text-sm" href={href}>

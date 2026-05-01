@@ -109,11 +109,11 @@ export const products: Product[] = [
     id: "tradicional",
     name: "Tradicional",
     description:
-      "Massa tradicional com gotas de chocolate ao leite e meio amargo.",
+      "O clássico cookie amanteigado, crocante por fora e macio por dentro, com gotas de chocolate ao leite e meio amargo.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/poster-tradicional.jpeg",
-      alt: "Card do sabor Tradicional da Cookies da Mavis"
+      src: "/images/brand/flavor-tradicional-clean.jpeg",
+      alt: "Cookie Tradicional da Cookies da Mavis"
     },
     category: "Clássico",
     featured: true
@@ -122,11 +122,11 @@ export const products: Product[] = [
     id: "tradicional-com-nutella",
     name: "Tradicional com Nutella",
     description:
-      "Massa tradicional com gotas de chocolate e recheio de Nutella.",
+      "Massa amanteigada do cookie tradicional com recheio irresistível de Nutella, crocância por fora e cremosidade por dentro.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/poster-tradicional-nutella.jpeg",
-      alt: "Card do sabor Tradicional com Nutella da Cookies da Mavis"
+      src: "/images/brand/flavor-tradicional-nutella-clean.jpeg",
+      alt: "Cookie Tradicional com Nutella da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -134,11 +134,11 @@ export const products: Product[] = [
     id: "red-velvet",
     name: "Red Velvet",
     description:
-      "Massa de red velvet com gotas de chocolate branco.",
+      "Massa vibrante e delicada de Red Velvet, com gotas de chocolate branco que derretem na boca.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/poster-red-velvet.jpeg",
-      alt: "Card do sabor Red Velvet da Cookies da Mavis"
+      src: "/images/brand/flavor-red-velvet-clean.jpeg",
+      alt: "Cookie Red Velvet da Cookies da Mavis"
     },
     category: "Clássico"
   },
@@ -146,11 +146,11 @@ export const products: Product[] = [
     id: "red-ninho",
     name: "Red Ninho",
     description:
-      "Massa de red velvet com gotas de chocolate branco e recheio de Ninho.",
+      "Massa macia de Red Velvet com recheio cremoso de leite Ninho, equilibrando doçura e suavidade em cada mordida.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/poster-red-ninho.jpeg",
-      alt: "Card do sabor Red Ninho da Cookies da Mavis"
+      src: "/images/brand/flavor-red-ninho-clean.jpeg",
+      alt: "Cookie Red Ninho da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -158,11 +158,11 @@ export const products: Product[] = [
     id: "red-nutella",
     name: "Red Nutella",
     description:
-      "Massa de red velvet com gotas de chocolate branco e recheio de Nutella.",
+      "O clássico de Red Velvet ganha ainda mais sabor com recheio generoso de Nutella, criando uma combinação perfeita entre cacau e avelã.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/poster-red-nutella.jpeg",
-      alt: "Card do sabor Red Nutella da Cookies da Mavis"
+      src: "/images/brand/flavor-red-nutella-clean.jpeg",
+      alt: "Cookie Red Nutella da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -170,11 +170,11 @@ export const products: Product[] = [
     id: "oreo",
     name: "Oreo",
     description:
-      "Massa com chocolate black 100% cacau e gotas de chocolate branco.",
+      "Massa macia e saborosa com chocolate Black 100% cacau, gotas de chocolate branco e um toque de baunilha.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/poster-oreo.jpeg",
-      alt: "Card do sabor Oreo da Cookies da Mavis"
+      src: "/images/brand/flavor-oreo-clean.jpeg",
+      alt: "Cookie Oreo da Cookies da Mavis"
     },
     category: "Lançamento"
   }
