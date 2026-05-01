@@ -1,6 +1,5 @@
 import { brandInfo, orderSteps } from "@/data/site";
 import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
-import { ButtonLink } from "./ButtonLink";
 import { SectionHeading } from "./SectionHeading";
 
 const orderHref = createWhatsAppLink(
@@ -23,22 +22,25 @@ export function HowToOrderSection() {
               description={brandInfo.deliveryInfo}
               tone="inverse"
             />
-            <ButtonLink
-              className="mt-5 gap-3 rounded-3xl border border-white/45 bg-[var(--color-primary-foreground)] px-4 py-3 text-left text-[var(--color-primary)] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] hover:scale-[1.02] sm:mt-8 sm:px-5 sm:py-4"
+            <a
+              aria-label="Peça aqui pelo WhatsApp"
+              className="mt-5 inline-flex w-fit items-center gap-3 rounded-3xl border border-white/45 bg-white px-4 py-3 text-[#b9152a] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] transition hover:-translate-y-1 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8 sm:px-5 sm:py-4"
               href={orderHref}
+              rel="noreferrer"
+              target="_blank"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-lg font-black">
                 →
               </span>
-              <span>
-                <span className="block font-display text-lg font-black leading-none">
+              <span className="grid gap-1 text-left">
+                <strong className="font-display text-xl font-black leading-none text-[#b9152a]">
                   Peça aqui
-                </span>
-                <span className="mt-1 block text-xs font-bold opacity-75">
-                  abre direto no WhatsApp
-                </span>
+                </strong>
+                <small className="text-xs font-black uppercase tracking-[0.12em] text-[#7e4b51]">
+                  abre no WhatsApp
+                </small>
               </span>
-            </ButtonLink>
+            </a>
           </div>
 
           <ol className="grid gap-3 sm:gap-4">
