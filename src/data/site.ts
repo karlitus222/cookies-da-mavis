@@ -38,7 +38,7 @@ export const brandInfo = {
   name: "Cookies da Mavis",
   bakerName: "Uma estudante de vet apaixonada por bichos e cookies",
   shortDescription:
-    "Cookies artesanais em Teresina-PI, feitos para adoçar o dia com muito recheio, carinho e miados.",
+    "Cookies artesanais em Teresina-PI e Timon-MA, feitos para adoçar o dia com muito recheio, carinho e miados.",
   heroTitle: "Amor, cookies e miados em cada mordida",
   heroSubtitle:
     "Cookies recheados, cookitos e lembrancinhas para matar a vontade de doce ou deixar qualquer momento mais especial.",
@@ -47,7 +47,7 @@ export const brandInfo = {
     "A Cookies da Mavis nasceu do amor por bichos e por cookies bem feitos. Cada fornada sai com aquele cuidado de quem quer entregar mais que um doce: um mimo gostoso, bonito e cheio de carinho.",
   finalCtaTitle: "Bateu vontade de um cookie da Mavis?",
   finalCtaDescription:
-    "Chama no WhatsApp, escolhe seus sabores e combina a entrega em Teresina. Se for para evento, lembrancinha ou presente, conta a ideia que a Mavis ajuda a montar.",
+    "Chama no WhatsApp, escolhe seus sabores e combina a entrega em Teresina ou Timon. Se for para evento, lembrancinha ou presente, conta a ideia que a Mavis ajuda a montar.",
   whatsappNumber: "558699225426",
   whatsappDisplay: "(86) 99225-5426",
   instagramHandle: "@cookiesmavis",
@@ -55,11 +55,11 @@ export const brandInfo = {
   linktreeUrl: "https://linktr.ee/cookiesmaviss",
   cardapioUrl:
     "https://drive.google.com/file/d/1ZgvTmLlGmkLf3HWaejXU03gdc73hI9Er/view?usp=sharing",
-  serviceRegion: "Teresina-PI",
+  serviceRegion: "Teresina-PI e Timon-MA",
   serviceHours: "Atendimento e disponibilidade pelo WhatsApp",
   paymentMethods: ["Confirmar no WhatsApp"],
   deliveryInfo:
-    "Atendimento em Teresina-PI com entregas via delivery. A taxa, o horário e a disponibilidade são combinados no WhatsApp.",
+    "Atendimento em Teresina-PI e Timon-MA com entregas via delivery. A taxa, o horário e a disponibilidade são combinados no WhatsApp.",
   logo: {
     src: "/images/brand/logo.jpeg",
     alt: "Logo da Cookies da Mavis com gato branco dentro de um cookie rosa"
@@ -89,7 +89,7 @@ export const brandInfo = {
     communicationTone:
       "Tom doce, próximo e carinhoso, com linguagem de afeto, presentes, eventos e momentos especiais.",
     audience:
-      "Público de Teresina que busca cookies artesanais para consumo próprio, aniversários, eventos, lembrancinhas e presentes.",
+      "Público de Teresina e Timon que busca cookies artesanais para consumo próprio, aniversários, eventos, lembrancinhas e presentes.",
     photoDirection:
       "Priorizar close-ups dos recheios nos sabores, fotos de mesa/embalagens para eventos e o logo como selo de confiança."
   },
@@ -173,8 +173,8 @@ export const products: Product[] = [
       "Massa macia e saborosa com chocolate Black 100% cacau, gotas de chocolate branco e um toque de baunilha.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/flavor-oreo-clean.jpeg",
-      alt: "Cookie Oreo da Cookies da Mavis"
+      src: "/images/brand/flavor-oreo-packaged.jpeg",
+      alt: "Cookie Oreo embalado da Cookies da Mavis"
     },
     category: "Lançamento"
   }
@@ -220,9 +220,9 @@ export const differentials = [
       "Cookitos, kits e embalagens que combinam com aniversário, mimo e mesa doce."
   },
   {
-    title: "Delivery em Teresina",
+    title: "Delivery em Teresina e Timon",
     description:
-      "Entrega via delivery em Teresina-PI, combinada direto no WhatsApp."
+      "Entrega via delivery em Teresina-PI e Timon-MA, combinada direto no WhatsApp."
   }
 ] as const;
 
@@ -266,7 +266,7 @@ export const faq: FaqItem[] = [
   {
     question: "Faz entrega?",
     answer:
-      "Sim. A Cookies da Mavis atende em Teresina-PI com entregas via delivery. Taxa e horário são confirmados no WhatsApp."
+      "Sim. A Cookies da Mavis atende em Teresina-PI e Timon-MA com entregas via delivery. Taxa e horário são confirmados no WhatsApp."
   },
   {
     question: "Precisa pedir com antecedencia?",
