@@ -62,6 +62,17 @@ export function Footer() {
             {brandInfo.whatsappDisplay}
           </p>
           <p>
+            <strong className="text-[var(--color-text)]">Site:</strong>{" "}
+            <a
+              className="font-bold text-[var(--color-primary)] underline underline-offset-4"
+              href={brandInfo.siteUrl}
+              rel="noreferrer"
+              target="_blank"
+            >
+              Cookies da Mavis
+            </a>
+          </p>
+          <p>
             <strong className="text-[var(--color-text)]">Regiao:</strong>{" "}
             {brandInfo.serviceRegion}
           </p>

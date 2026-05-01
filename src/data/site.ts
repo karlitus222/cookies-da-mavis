@@ -54,6 +54,7 @@ export const brandInfo = {
   instagramHandle: "@cookiesmavis",
   instagramUrl: "https://www.instagram.com/cookiesmavis/",
   linktreeUrl: "https://linktr.ee/cookiesmaviss",
+  siteUrl: "https://karlitus222.github.io/cookies-da-mavis/",
   cardapioUrl:
     "https://drive.google.com/file/d/1ZgvTmLlGmkLf3HWaejXU03gdc73hI9Er/view?usp=sharing",
   serviceRegion: "Teresina-PI e Timon-MA",

@@ -24,10 +24,20 @@ export function HowToOrderSection() {
               tone="inverse"
             />
             <ButtonLink
-              className="mt-5 bg-[var(--color-primary-foreground)] text-[var(--color-primary)] sm:mt-8"
+              className="mt-5 gap-3 rounded-3xl border border-white/45 bg-[var(--color-primary-foreground)] px-4 py-3 text-left text-[var(--color-primary)] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] hover:scale-[1.02] sm:mt-8 sm:px-5 sm:py-4"
               href={orderHref}
             >
-              Peça aqui pelo WhatsApp
+              <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-lg font-black">
+                →
+              </span>
+              <span>
+                <span className="block font-display text-lg font-black leading-none">
+                  Peça aqui
+                </span>
+                <span className="mt-1 block text-xs font-bold opacity-75">
+                  abre direto no WhatsApp
+                </span>
+              </span>
             </ButtonLink>
           </div>
 

@@ -17,14 +17,30 @@ const nunito = Nunito({
 
 const metadataTitle = brandInfo.name.includes("[Editar]")
   ? "Landing page para confeitaria de cookies"
-  : `${brandInfo.name} | Cookies artesanais`;
+  : brandInfo.name;
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || brandInfo.siteUrl || "http://localhost:3000";
 
 export const metadata: Metadata = {
   title: metadataTitle,
   description: brandInfo.shortDescription,
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"
-  )
+  applicationName: brandInfo.name,
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: siteUrl
+  },
+  openGraph: {
+    title: brandInfo.name,
+    description: brandInfo.shortDescription,
+    siteName: brandInfo.name,
+    url: siteUrl,
+    type: "website"
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: brandInfo.name,
+    description: brandInfo.shortDescription
+  }
 };
 
 export default function RootLayout({
