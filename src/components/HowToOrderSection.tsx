@@ -11,11 +11,11 @@ const orderHref = createWhatsAppLink(
 export function HowToOrderSection() {
   return (
     <section
-      className="bg-[var(--color-primary)] px-4 py-16 text-[var(--color-primary-foreground)] sm:px-6 lg:px-8 lg:py-24"
+      className="bg-[var(--color-primary)] px-4 py-12 text-[var(--color-primary-foreground)] sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="como-pedir"
     >
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[0.8fr_1fr] lg:items-start">
+        <div className="grid gap-7 lg:grid-cols-[0.8fr_1fr] lg:items-start lg:gap-10">
           <div>
             <SectionHeading
               eyebrow="Como pedir"
@@ -24,28 +24,28 @@ export function HowToOrderSection() {
               tone="inverse"
             />
             <ButtonLink
-              className="mt-8 bg-[var(--color-primary-foreground)] text-[var(--color-primary)]"
+              className="mt-5 bg-[var(--color-primary-foreground)] text-[var(--color-primary)] sm:mt-8"
               href={orderHref}
             >
               Chamar no WhatsApp
             </ButtonLink>
           </div>
 
-          <ol className="grid gap-4">
+          <ol className="grid gap-3 sm:gap-4">
             {orderSteps.map((step, index) => (
               <li
-                className="rounded-[2rem] border border-white/15 bg-white/[0.08] p-5 backdrop-blur"
+                className="rounded-[1.5rem] border border-white/15 bg-white/[0.08] p-4 backdrop-blur sm:rounded-[2rem] sm:p-5"
                 key={step.title}
               >
                 <div className="flex gap-4">
-                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-sm font-black text-[var(--color-primary)]">
+                  <span className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-[var(--color-accent-soft)] text-xs font-black text-[var(--color-primary)] sm:h-11 sm:w-11 sm:rounded-2xl sm:text-sm">
                     {index + 1}
                   </span>
                   <div>
-                    <h3 className="font-display text-2xl font-black">
+                    <h3 className="font-display text-xl font-black sm:text-2xl">
                       {step.title}
                     </h3>
-                    <p className="mt-2 leading-7 text-white/[0.78]">
+                    <p className="mt-1.5 text-sm leading-6 text-white/[0.78] sm:mt-2 sm:text-base sm:leading-7">
                       {step.description}
                     </p>
                   </div>

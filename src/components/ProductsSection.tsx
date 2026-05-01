@@ -8,7 +8,7 @@ import { SectionHeading } from "./SectionHeading";
 export function ProductsSection() {
   return (
     <section
-      className="bg-[var(--color-surface)] px-4 py-16 sm:px-6 lg:px-8 lg:py-24"
+      className="bg-[var(--color-surface)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="sabores"
     >
       <div className="mx-auto max-w-7xl">
@@ -23,7 +23,7 @@ export function ProductsSection() {
           </EditingHint>
         </div>
 
-        <div className="mt-10 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-7 grid gap-4 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => (
             <div
               className={`animate-rise-in ${
@@ -37,16 +37,16 @@ export function ProductsSection() {
         </div>
 
         {combos.length > 0 ? (
-          <div className="mt-16 rounded-[2rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-6 sm:p-8">
+          <div className="mt-10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-4 sm:mt-16 sm:rounded-[2rem] sm:p-8">
             <SectionHeading
               eyebrow="Especiais"
               title="Para eventos, presentes e lembrancinhas"
               description="Formatos que aparecem no Instagram da Cookies da Mavis e podem ser combinados por encomenda."
             />
-            <div className="mt-8 grid gap-4 md:grid-cols-2">
+            <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-2">
               {combos.map((combo) => (
                 <article
-                  className="overflow-hidden rounded-3xl bg-[var(--color-surface)] shadow-sm"
+                  className="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm sm:rounded-3xl"
                   key={combo.id}
                 >
                   {combo.image ? (
@@ -55,14 +55,14 @@ export function ProductsSection() {
                       alt={combo.image.alt}
                       width={720}
                       height={520}
-                      className="aspect-[4/3] w-full object-cover"
+                      className="aspect-[4/2.7] w-full object-cover sm:aspect-[4/3]"
                     />
                   ) : null}
-                  <div className="p-5">
-                    <h3 className="font-display text-2xl font-black">
+                  <div className="p-4 sm:p-5">
+                    <h3 className="font-display text-xl font-black sm:text-2xl">
                       {combo.name}
                     </h3>
-                    <p className="mt-2 leading-7 text-[var(--color-muted)]">
+                    <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
                       {combo.description}
                     </p>
                     {combo.price ? (

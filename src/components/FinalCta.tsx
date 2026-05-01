@@ -9,18 +9,18 @@ const orderHref = createWhatsAppLink(
 
 export function FinalCta() {
   return (
-    <section className="px-4 py-16 sm:px-6 lg:px-8 lg:py-24" id="contato">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[2.5rem] bg-[var(--color-text)] p-8 text-[var(--color-primary-foreground)] shadow-brand sm:p-12">
+    <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="contato">
+      <div className="mx-auto max-w-5xl overflow-hidden rounded-[1.75rem] bg-[var(--color-text)] p-5 text-[var(--color-primary-foreground)] shadow-brand sm:rounded-[2.5rem] sm:p-12">
         <p className="text-xs font-black uppercase tracking-[0.25em] text-white/60">
           Cookies da Mavis
         </p>
-        <h2 className="mt-5 max-w-3xl font-display text-3xl font-black leading-tight sm:text-5xl">
+        <h2 className="mt-4 max-w-3xl font-display text-2xl font-black leading-tight sm:mt-5 sm:text-5xl">
           {brandInfo.finalCtaTitle}
         </h2>
-        <p className="mt-5 max-w-2xl text-lg leading-8 text-white/75">
+        <p className="mt-4 max-w-2xl text-base leading-7 text-white/75 sm:mt-5 sm:text-lg sm:leading-8">
           {brandInfo.finalCtaDescription}
         </p>
-        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+        <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:gap-3">
           <ButtonLink
             className="bg-[var(--color-primary-foreground)] text-[var(--color-text)]"
             href={orderHref}
