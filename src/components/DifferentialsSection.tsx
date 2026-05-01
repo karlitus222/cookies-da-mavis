@@ -12,7 +12,7 @@ export function DifferentialsSection() {
             <SectionHeading
               eyebrow="Diferenciais"
               title="O jeitinho Mavis de adoçar momentos"
-              description="A identidade da marca aparece nos detalhes: rosa, gato, embalagens delicadas, cookies recheados e muita intenção de presente."
+              description="Cookies bonitos, recheados e feitos com carinho para virar mimo, lembrancinha ou sobremesa do dia."
             />
           </div>
 

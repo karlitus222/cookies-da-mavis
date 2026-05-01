@@ -16,14 +16,14 @@ export function ProductsSection() {
           <SectionHeading
             eyebrow="Sabores"
             title="Escolha seu cookie da Mavis"
-            description="Sabores extraídos do cardápio e das fotos reais da marca. Os recheados são os que fazem a tela quase virar vitrine."
+            description="Tem clássico, red velvet, Oreo e versões bem recheadas para quem ama Nutella ou Ninho."
           />
           <EditingHint className="self-start sm:self-auto">
             cards editaveis
           </EditingHint>
         </div>
 
-        <div className="mt-7 grid gap-4 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => (
             <div
               className={`animate-rise-in ${
@@ -41,7 +41,7 @@ export function ProductsSection() {
             <SectionHeading
               eyebrow="Especiais"
               title="Para eventos, presentes e lembrancinhas"
-              description="Formatos que aparecem no Instagram da Cookies da Mavis e podem ser combinados por encomenda."
+              description="Cookitos, kits e mini cookies para deixar aniversários, encontros e presentes mais doces."
             />
             <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-2">
               {combos.map((combo) => (

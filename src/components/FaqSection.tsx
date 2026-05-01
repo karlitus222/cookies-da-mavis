@@ -10,8 +10,8 @@ export function FaqSection() {
         <SectionHeading
           align="center"
           eyebrow="FAQ"
-          title="Perguntas que precisam refletir o atendimento real"
-          description="Edite as respostas conforme prazos, entrega, retirada, pagamento e personalizacoes da confeiteira."
+          title="Dúvidas rápidas"
+          description="Se ainda ficar alguma dúvida, é só chamar no WhatsApp."
         />
 
         <div className="mt-7 divide-y divide-[var(--color-primary)]/10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)] sm:mt-10 sm:rounded-[2rem]">

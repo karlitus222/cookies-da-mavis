@@ -19,37 +19,37 @@ export function ProductCard({ product }: ProductCardProps) {
   );
 
   return (
-    <article className="group overflow-hidden rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
+    <article className="group overflow-hidden rounded-[1.25rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
       <div className="relative overflow-hidden">
         <Image
           src={assetPath(product.image.src)}
           alt={product.image.alt}
           width={640}
           height={800}
-          className="aspect-[4/3.35] w-full object-cover transition duration-500 group-hover:scale-105 sm:aspect-[4/5]"
+          className="aspect-[9/16] w-full bg-[var(--color-background)] object-cover transition duration-500 group-hover:scale-105 sm:aspect-[4/5] sm:object-contain"
         />
         {product.category ? (
-          <span className="absolute left-3 top-3 rounded-full bg-[var(--color-surface)]/90 px-2.5 py-1 text-[0.65rem] font-black uppercase tracking-[0.16em] text-[var(--color-primary)] backdrop-blur sm:left-4 sm:top-4 sm:px-3 sm:text-xs sm:tracking-[0.18em]">
+          <span className="absolute left-2 top-2 hidden rounded-full bg-[var(--color-surface)]/90 px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-[0.12em] text-[var(--color-primary)] backdrop-blur sm:left-4 sm:top-4 sm:inline-flex sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.18em]">
             {product.category}
           </span>
         ) : null}
       </div>
 
-      <div className="p-4 sm:p-6">
-        <div className="flex items-start justify-between gap-4">
-          <h3 className="font-display text-xl font-black text-[var(--color-text)] sm:text-2xl">
+      <div className="p-3 sm:p-6">
+        <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between sm:gap-4">
+          <h3 className="font-display text-base font-black leading-tight text-[var(--color-text)] sm:text-2xl">
             {product.name}
           </h3>
           {product.price ? (
-            <p className="rounded-full bg-[var(--color-accent-soft)] px-2.5 py-1 text-xs font-black text-[var(--color-primary)] sm:px-3 sm:text-sm">
+            <p className="w-fit rounded-full bg-[var(--color-accent-soft)] px-2 py-0.5 text-[0.68rem] font-black text-[var(--color-primary)] sm:px-3 sm:py-1 sm:text-sm">
               {product.price}
             </p>
           ) : null}
         </div>
-        <p className="mt-2 min-h-0 text-sm leading-6 text-[var(--color-muted)] sm:mt-3 sm:min-h-20 sm:text-base sm:leading-7">
+        <p className="mt-2 line-clamp-2 min-h-0 text-xs leading-5 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7">
           {product.description}
         </p>
-        <ButtonLink className="mt-4 w-full sm:mt-5" href={href}>
+        <ButtonLink className="mt-3 w-full px-3 py-2 text-xs sm:mt-5 sm:px-5 sm:py-3 sm:text-sm" href={href}>
           Quero esse
         </ButtonLink>
       </div>

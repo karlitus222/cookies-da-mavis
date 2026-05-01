@@ -9,8 +9,8 @@ export function TestimonialsSection() {
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
             eyebrow="Depoimentos"
-            title="Espaco preparado para avaliacoes reais"
-            description="Use apenas depoimentos verdadeiros, com autorizacao quando necessario. Os textos atuais sao placeholders."
+            title="Quem prova, volta"
+            description="Em breve, entram aqui mensagens reais de quem já pediu Cookies da Mavis."
           />
           <EditingHint>placeholders visiveis</EditingHint>
         </div>

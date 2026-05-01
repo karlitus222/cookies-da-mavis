@@ -38,13 +38,13 @@ export const brandInfo = {
   name: "Cookies da Mavis",
   bakerName: "Uma estudante de vet apaixonada por bichos e cookies",
   shortDescription:
-    "Cookies artesanais em Teresina-PI, feitos para adoçar momentos especiais com muito afeto, recheio e miados.",
+    "Cookies artesanais em Teresina-PI, feitos para adoçar o dia com muito recheio, carinho e miados.",
   heroTitle: "Amor, cookies e miados em cada mordida",
   heroSubtitle:
-    "Da bio ao cardápio, a Cookies da Mavis mistura carinho, estética fofa e cookies bem recheados para presentes, eventos e aquela vontade urgente de doce.",
+    "Cookies recheados, cookitos e lembrancinhas para matar a vontade de doce ou deixar qualquer momento mais especial.",
   storyTitle: "Uma estudante de vet que também assa felicidade",
   story:
-    "A Cookies da Mavis nasceu desse encontro bem próprio entre bichos, cookies e cuidado. A marca fala com leveza, usa o gatinho como parte da identidade e transforma cada fornada em um jeito carinhoso de presentear, celebrar e deixar o dia mais doce.",
+    "A Cookies da Mavis nasceu do amor por bichos e por cookies bem feitos. Cada fornada sai com aquele cuidado de quem quer entregar mais que um doce: um mimo gostoso, bonito e cheio de carinho.",
   finalCtaTitle: "Bateu vontade de um cookie da Mavis?",
   finalCtaDescription:
     "Chama no WhatsApp, escolhe seus sabores e combina a entrega em Teresina. Se for para evento, lembrancinha ou presente, conta a ideia que a Mavis ajuda a montar.",
@@ -70,7 +70,7 @@ export const brandInfo = {
   },
   aboutImage: {
     src: "/images/brand/post-12-DOOFv80DrR0.jpg",
-    alt: "Embalagens e cookitos da Cookies da Mavis com identidade rosa"
+    alt: "Cookitos com Nutella e embalagens rosas da Cookies da Mavis"
   },
   palette: {
     background: "#fff1f3",
@@ -112,8 +112,8 @@ export const products: Product[] = [
       "Massa tradicional com gotas de chocolate ao leite e meio amargo.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/cardapio-page1-image5-X15.jpg",
-      alt: "Cookie tradicional da Cookies da Mavis com gotas de chocolate"
+      src: "/images/brand/poster-tradicional.jpeg",
+      alt: "Card do sabor Tradicional da Cookies da Mavis"
     },
     category: "Clássico",
     featured: true
@@ -125,8 +125,8 @@ export const products: Product[] = [
       "Massa tradicional com gotas de chocolate e recheio de Nutella.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/tradicional-nutella.jpeg",
-      alt: "Cookie Tradicional com Nutella da Cookies da Mavis"
+      src: "/images/brand/poster-tradicional-nutella.jpeg",
+      alt: "Card do sabor Tradicional com Nutella da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -137,8 +137,8 @@ export const products: Product[] = [
       "Massa de red velvet com gotas de chocolate branco.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/cookies-red-velvet.jpeg",
-      alt: "Cookies Red Velvet embalados da Cookies da Mavis"
+      src: "/images/brand/poster-red-velvet.jpeg",
+      alt: "Card do sabor Red Velvet da Cookies da Mavis"
     },
     category: "Clássico"
   },
@@ -149,8 +149,8 @@ export const products: Product[] = [
       "Massa de red velvet com gotas de chocolate branco e recheio de Ninho.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/red-ninho.jpeg",
-      alt: "Cookie Red Ninho da Cookies da Mavis"
+      src: "/images/brand/poster-red-ninho.jpeg",
+      alt: "Card do sabor Red Ninho da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -161,8 +161,8 @@ export const products: Product[] = [
       "Massa de red velvet com gotas de chocolate branco e recheio de Nutella.",
     price: "R$ 12,00",
     image: {
-      src: "/images/brand/red-nutella.jpeg",
-      alt: "Cookie Red Nutella da Cookies da Mavis com recheio cremoso"
+      src: "/images/brand/poster-red-nutella.jpeg",
+      alt: "Card do sabor Red Nutella da Cookies da Mavis"
     },
     category: "Recheado"
   },
@@ -173,8 +173,8 @@ export const products: Product[] = [
       "Massa com chocolate black 100% cacau e gotas de chocolate branco.",
     price: "R$ 8,00",
     image: {
-      src: "/images/brand/cookies-de-oreo.jpeg",
-      alt: "Cookies de Oreo da Cookies da Mavis em uma assadeira"
+      src: "/images/brand/poster-oreo.jpeg",
+      alt: "Card do sabor Oreo da Cookies da Mavis"
     },
     category: "Lançamento"
   }
@@ -185,7 +185,7 @@ export const combos: Combo[] = [
     id: "cookitos-com-nutella",
     name: "Cookitos com Nutella",
     description:
-      "Mini cookies com potinho de Nutella, formato que apareceu no perfil como queridinho para eventos e momentos especiais.",
+      "Mini cookies com potinho de Nutella para presentear, dividir ou deixar a mesa mais gostosa.",
     image: {
       src: "/images/brand/post-12-DOOFv80DrR0.jpg",
       alt: "Cookitos com Nutella em embalagem da Cookies da Mavis"
@@ -195,7 +195,7 @@ export const combos: Combo[] = [
     id: "mini-cookies-eventos",
     name: "Mini cookies para eventos",
     description:
-      "Opção vista no Instagram para aniversários, lembrancinhas e mesas doces. Quantidades e montagem são combinadas por encomenda.",
+      "Perfeitos para aniversários, lembrancinhas e mesas doces. Você combina quantidade, sabores e montagem pelo WhatsApp.",
     image: {
       src: "/images/brand/post-02-DXFYwe7DzXx.jpg",
       alt: "Mesa de aniversário com mini cookies da Cookies da Mavis"
@@ -207,29 +207,29 @@ export const differentials = [
   {
     title: "Cookies artesanais",
     description:
-      "Produção com estética própria, cuidado nos detalhes e sabores pensados para ficar bonitos e gostosos."
+      "Feitos com cuidado em cada fornada, do sabor à embalagem."
   },
   {
     title: "Recheios generosos",
     description:
-      "Os recheados aparecem como protagonistas do cardápio, com Nutella e Ninho bem visíveis nas fotos."
+      "Nutella e Ninho aparecem sem timidez nos cookies recheados."
   },
   {
     title: "Eventos e presentes",
     description:
-      "O perfil mostra mini cookies, kits, embalagens e entregas para aniversários, simpósios e datas especiais."
+      "Cookitos, kits e embalagens que combinam com aniversário, mimo e mesa doce."
   },
   {
     title: "Delivery em Teresina",
     description:
-      "A bio informa atendimento em Teresina-PI com entregas via delivery combinadas pelo WhatsApp."
+      "Entrega via delivery em Teresina-PI, combinada direto no WhatsApp."
   }
 ] as const;
 
 export const orderSteps = [
   {
     title: "Escolha seus cookies",
-    description: "Veja os sabores reais cadastrados e escolha os favoritos."
+    description: "Escolha seus sabores favoritos no cardápio."
   },
   {
     title: "Chame no WhatsApp",
@@ -243,7 +243,7 @@ export const orderSteps = [
   {
     title: "Combine entrega ou retirada",
     description:
-      "Finalize conforme a forma real de atendimento da confeiteira."
+      "Combine o melhor horário e a forma de entrega."
   }
 ] as const;
 
@@ -251,7 +251,7 @@ export const testimonials: Testimonial[] = [
   {
     id: "depoimento-placeholder-1",
     name: "Cliente autorizado",
-    text: "Espaço reservado para um depoimento real recebido pelo WhatsApp ou Instagram.",
+    text: "Espaço reservado para um depoimento real de cliente.",
     isPlaceholder: true
   },
   {
@@ -276,11 +276,11 @@ export const faq: FaqItem[] = [
   {
     question: "Quais formas de pagamento?",
     answer:
-      "As formas de pagamento ainda precisam ser confirmadas pela marca. Deixei esse ponto centralizado em `brandInfo.paymentMethods` para edição rápida."
+      "As formas de pagamento são confirmadas no WhatsApp no fechamento do pedido."
   },
   {
     question: "Posso montar uma caixa personalizada?",
     answer:
-      "O perfil mostra kits, mini cookies e embalagens especiais. Para montar uma caixa, chame no WhatsApp e combine sabores, quantidade e ocasião."
+      "Pode sim. Chame no WhatsApp e combine sabores, quantidade e ocasião."
   }
 ];
