@@ -1,0 +1,10 @@
+<svg width="760" height="920" viewBox="0 0 760 920" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder sobre a confeiteira</title>
+  <desc id="desc">Substitua por foto real da confeiteira, dos cookies ou da producao.</desc>
+  <rect width="760" height="920" fill="#FFF8F0"/>
+  <circle cx="380" cy="250" r="120" fill="#F5D7BE"/>
+  <path d="M190 730C206 580 278 490 380 490C482 490 554 580 570 730" fill="#DFA77F"/>
+  <rect x="160" y="730" width="440" height="76" rx="38" fill="#FFFDF8"/>
+  <text x="380" y="779" text-anchor="middle" font-family="Georgia, serif" font-size="30" font-weight="700" fill="#68452F">FOTO REAL</text>
+  <path d="M285 405C320 432 440 432 475 405" stroke="#68452F" stroke-width="12" stroke-linecap="round"/>
+</svg>

@@ -1,0 +1,14 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder de logo</title>
+  <desc id="desc">Substitua este arquivo pelo logo real da confeiteira.</desc>
+  <rect width="320" height="320" rx="72" fill="#FFFDF8"/>
+  <rect x="18" y="18" width="284" height="284" rx="60" stroke="#68452F" stroke-width="10" stroke-dasharray="18 14"/>
+  <circle cx="160" cy="140" r="62" fill="#F5D7BE"/>
+  <circle cx="135" cy="122" r="7" fill="#68452F"/>
+  <circle cx="177" cy="112" r="8" fill="#68452F"/>
+  <circle cx="174" cy="158" r="6" fill="#68452F"/>
+  <circle cx="142" cy="166" r="9" fill="#68452F"/>
+  <path d="M84 235H236" stroke="#68452F" stroke-width="10" stroke-linecap="round"/>
+  <path d="M112 260H208" stroke="#C8794A" stroke-width="8" stroke-linecap="round"/>
+  <text x="160" y="231" text-anchor="middle" font-family="Georgia, serif" font-size="22" font-weight="700" fill="#68452F">LOGO REAL</text>
+</svg>

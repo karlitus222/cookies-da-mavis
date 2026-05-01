@@ -1,0 +1,12 @@
+<svg width="760" height="570" viewBox="0 0 760 570" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Placeholder de cookie</title>
+  <desc id="desc">Substitua por uma foto real do sabor.</desc>
+  <rect width="760" height="570" fill="#FFF8F0"/>
+  <circle cx="380" cy="250" r="155" fill="#DFA77F"/>
+  <circle cx="325" cy="205" r="16" fill="#68452F"/>
+  <circle cx="420" cy="185" r="20" fill="#68452F"/>
+  <circle cx="458" cy="285" r="17" fill="#68452F"/>
+  <circle cx="342" cy="322" r="19" fill="#68452F"/>
+  <path d="M226 455H534" stroke="#68452F" stroke-width="12" stroke-linecap="round"/>
+  <text x="380" y="505" text-anchor="middle" font-family="Georgia, serif" font-size="28" font-weight="700" fill="#68452F">FOTO REAL DO SABOR</text>
+</svg>
