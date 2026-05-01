@@ -1,6 +1,19 @@
 import type { Metadata } from "next";
+import { Fredoka, Nunito } from "next/font/google";
 import { brandInfo } from "@/data/site";
 import "./globals.css";
+
+const fredoka = Fredoka({
+  subsets: ["latin"],
+  variable: "--font-display",
+  weight: ["500", "600", "700"]
+});
+
+const nunito = Nunito({
+  subsets: ["latin"],
+  variable: "--font-body",
+  weight: ["400", "600", "700", "800", "900"]
+});
 
 const metadataTitle = brandInfo.name.includes("[Editar]")
   ? "Landing page para confeitaria de cookies"
@@ -21,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body className={`${fredoka.variable} ${nunito.variable}`}>{children}</body>
     </html>
   );
 }

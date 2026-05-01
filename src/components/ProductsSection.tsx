@@ -2,6 +2,7 @@ import Image from "next/image";
 import { combos, products } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { EditingHint } from "./EditingHint";
+import { FlavorShowcase } from "./FlavorShowcase";
 import { ProductCard } from "./ProductCard";
 import { SectionHeading } from "./SectionHeading";
 
@@ -22,6 +23,8 @@ export function ProductsSection() {
             cards editaveis
           </EditingHint>
         </div>
+
+        <FlavorShowcase products={products} />
 
         <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => (

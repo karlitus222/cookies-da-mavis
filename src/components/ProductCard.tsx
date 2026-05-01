@@ -1,7 +1,11 @@
+"use client";
+
 import Image from "next/image";
+import { useState } from "react";
 import type { Product } from "@/data/site";
 import { brandInfo } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
+import { cn } from "@/lib/cn";
 import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { ButtonLink } from "./ButtonLink";
 
@@ -10,6 +14,7 @@ type ProductCardProps = {
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const href = createWhatsAppLink(
     brandInfo.whatsappNumber,
     createOrderMessage({
@@ -17,6 +22,7 @@ export function ProductCard({ product }: ProductCardProps) {
       productName: product.name
     })
   );
+  const descriptionId = `${product.id}-description`;
 
   return (
     <article className="group overflow-hidden rounded-[1.25rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
@@ -46,9 +52,24 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           ) : null}
         </div>
-        <p className="mt-2 line-clamp-4 min-h-0 text-[0.7rem] leading-4 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7">
+        <p
+          className={cn(
+            "mt-2 min-h-0 text-[0.7rem] leading-4 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7",
+            isExpanded ? "line-clamp-none" : "line-clamp-3"
+          )}
+          id={descriptionId}
+        >
           {product.description}
         </p>
+        <button
+          aria-controls={descriptionId}
+          aria-expanded={isExpanded}
+          className="mt-1.5 text-[0.68rem] font-black text-[var(--color-primary)] underline decoration-[var(--color-accent)]/40 underline-offset-4 sm:hidden"
+          onClick={() => setIsExpanded((current) => !current)}
+          type="button"
+        >
+          {isExpanded ? "Mostrar menos" : "Ler mais"}
+        </button>
         <ButtonLink className="mt-3 w-full px-3 py-2 text-xs sm:mt-5 sm:px-5 sm:py-3 sm:text-sm" href={href}>
           Quero esse
         </ButtonLink>

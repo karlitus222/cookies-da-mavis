@@ -25,7 +25,9 @@ export function Hero() {
         <div className="animate-rise-in">
           <EditingHint>conteudo aguardando materiais reais</EditingHint>
           <h1 className="mt-3 max-w-4xl font-display text-[2.35rem] font-black leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
-            {brandInfo.heroTitle}
+            <span className="hero-word">Amor</span>,{" "}
+            <span className="hero-word">cookies</span> e{" "}
+            <span className="hero-word">miados</span> em cada mordida
           </h1>
           <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:mt-6 sm:text-xl sm:leading-9">
             {brandInfo.heroSubtitle}
@@ -66,7 +68,7 @@ export function Hero() {
         </div>
 
         <div className="animate-rise-in stagger-2">
-          <div className="relative mx-auto max-w-xl">
+          <div className="group relative mx-auto max-w-xl">
             <div className="absolute -left-3 -top-3 h-20 w-20 rounded-[1.5rem] bg-[var(--color-accent-soft)] animate-soft-float sm:-left-4 sm:-top-4 sm:h-28 sm:w-28 sm:rounded-[2rem]" />
             <div className="absolute -bottom-4 -right-4 h-24 w-24 rounded-full bg-[var(--color-primary)]/10 sm:-bottom-5 sm:-right-5 sm:h-36 sm:w-36" />
             <Image
@@ -74,9 +76,18 @@ export function Hero() {
               alt={brandInfo.heroImage.alt}
               width={760}
               height={880}
-              className="relative aspect-[4/4.3] w-full rounded-[1.75rem] border border-white/70 object-cover shadow-brand sm:aspect-[4/5] sm:rounded-[2.5rem]"
+              className="relative aspect-[4/4.3] w-full rounded-[1.75rem] border border-white/70 object-cover shadow-brand transition duration-700 ease-out group-hover:-rotate-1 group-hover:scale-[1.025] sm:aspect-[4/5] sm:rounded-[2.5rem]"
               priority
             />
+            <div className="pointer-events-none absolute inset-0 translate-x-[-120%] rounded-[1.75rem] bg-[linear-gradient(115deg,transparent_35%,rgba(255,255,255,0.42)_50%,transparent_65%)] opacity-0 transition duration-700 group-hover:translate-x-[120%] group-hover:opacity-100 sm:rounded-[2.5rem]" />
+            <div className="absolute -bottom-4 left-4 max-w-[78%] rounded-2xl border border-white/70 bg-[var(--color-surface)]/92 p-3 shadow-brand backdrop-blur transition duration-500 group-hover:-translate-y-1 sm:-bottom-6 sm:left-7 sm:rounded-3xl sm:p-4">
+              <p className="text-[0.62rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs">
+                Destaque da Mavis
+              </p>
+              <p className="mt-1 font-display text-lg font-black leading-tight text-[var(--color-text)] sm:text-2xl">
+                {featuredProduct?.name ?? "Tradicional com Nutella"}
+              </p>
+            </div>
           </div>
         </div>
       </div>

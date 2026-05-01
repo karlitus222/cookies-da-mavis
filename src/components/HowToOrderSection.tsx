@@ -27,7 +27,7 @@ export function HowToOrderSection() {
               className="mt-5 bg-[var(--color-primary-foreground)] text-[var(--color-primary)] sm:mt-8"
               href={orderHref}
             >
-              Chamar no WhatsApp
+              Peça aqui pelo WhatsApp
             </ButtonLink>
           </div>
 
