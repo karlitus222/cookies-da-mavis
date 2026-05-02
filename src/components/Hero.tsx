@@ -6,7 +6,6 @@ import { EditingHint } from "./EditingHint";
 
 export function Hero() {
   const featuredProduct = products.find((product) => product.featured);
-  const mobileHeroImage = featuredProduct?.image ?? brandInfo.heroImage;
 
   return (
     <section
@@ -18,19 +17,7 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1fr_0.9fr] lg:gap-10">
         <div className="animate-rise-in">
           <EditingHint>conteudo aguardando materiais reais</EditingHint>
-          <div className="mb-3 flex items-center gap-3 rounded-[1.5rem] border border-white/65 bg-white/52 p-2 pr-3 shadow-sm backdrop-blur sm:hidden">
-            <Image
-              alt={mobileHeroImage.alt}
-              className="h-16 w-16 shrink-0 rounded-[1.15rem] object-cover shadow-sm"
-              height={120}
-              src={assetPath(mobileHeroImage.src)}
-              width={120}
-            />
-            <p className="font-display text-[0.95rem] font-bold leading-tight text-[var(--color-text)]">
-              Cookie recheado, foto real e sabor da Mavis.
-            </p>
-          </div>
-          <h1 className="mt-3 max-w-4xl font-display text-[2rem] font-bold leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
+          <h1 className="mt-4 max-w-4xl font-display text-[2rem] font-bold leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
             <span className="sm:hidden">
               <span className="hero-word">Amor</span>,{" "}
               <span className="hero-word">cookies</span> e{" "}
