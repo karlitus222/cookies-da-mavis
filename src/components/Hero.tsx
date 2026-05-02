@@ -13,6 +13,18 @@ export function Hero() {
       id="inicio"
     >
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-[var(--color-accent)]/10 blur-3xl" />
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute left-5 top-28 hidden text-3xl opacity-50 animate-soft-float sm:block"
+      >
+        🍪
+      </span>
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute bottom-14 right-8 hidden text-2xl opacity-45 animate-soft-float sm:block"
+      >
+        🐾
+      </span>
 
       <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1fr_0.9fr] lg:gap-10">
         <div className="animate-rise-in">

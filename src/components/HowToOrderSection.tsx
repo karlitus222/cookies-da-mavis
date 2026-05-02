@@ -18,7 +18,7 @@ export function HowToOrderSection() {
             />
             <a
               aria-label="Peça aqui escolhendo os sabores"
-              className="tap-soft mt-5 inline-flex w-fit items-center gap-3 rounded-3xl border border-white/45 bg-white px-4 py-3 text-[#b9152a] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] transition hover:-translate-y-1 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8 sm:px-5 sm:py-4"
+              className="button-3d-soft tap-soft mt-5 inline-flex w-fit items-center gap-3 rounded-3xl border border-white/45 bg-white px-4 py-3 text-[#b9152a] transition hover:-translate-y-1 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8 sm:px-5 sm:py-4"
               href="#sabores"
             >
               <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[var(--color-accent-soft)] text-lg font-black">

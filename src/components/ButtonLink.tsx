@@ -8,9 +8,9 @@ type ButtonLinkProps = AnchorHTMLAttributes<HTMLAnchorElement> & {
 
 const variants = {
   primary:
-    "bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-brand hover:-translate-y-0.5 hover:shadow-xl",
+    "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5",
   secondary:
-    "border border-[var(--color-primary)]/20 bg-[var(--color-surface)] text-[var(--color-primary)] hover:-translate-y-0.5 hover:border-[var(--color-primary)]",
+    "button-3d-soft border border-[var(--color-primary)]/20 bg-[var(--color-surface)] text-[var(--color-primary)] hover:-translate-y-0.5 hover:border-[var(--color-primary)]",
   ghost:
     "text-[var(--color-primary)] underline decoration-[var(--color-accent)]/40 underline-offset-8 hover:decoration-[var(--color-accent)]"
 };

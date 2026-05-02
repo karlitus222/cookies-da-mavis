@@ -8,6 +8,15 @@ type SectionHeadingProps = {
   tone?: "default" | "inverse";
 };
 
+const eyebrowIcons: Record<string, string> = {
+  "como pedir": "🛍️",
+  depoimentos: "💕",
+  diferenciais: "🐾",
+  especiais: "🎁",
+  faq: "❔",
+  sabores: "🍪"
+};
+
 export function SectionHeading({
   eyebrow,
   title,
@@ -16,6 +25,9 @@ export function SectionHeading({
   tone = "default"
 }: SectionHeadingProps) {
   const isInverse = tone === "inverse";
+  const eyebrowIcon = eyebrow
+    ? eyebrowIcons[eyebrow.toLocaleLowerCase("pt-BR")]
+    : null;
 
   return (
     <div
@@ -27,10 +39,13 @@ export function SectionHeading({
       {eyebrow ? (
         <p
           className={cn(
-            "mb-2 text-[0.65rem] font-black uppercase tracking-[0.22em] sm:mb-3 sm:text-xs sm:tracking-[0.25em]",
-            isInverse ? "text-white/70" : "text-[var(--color-accent)]"
+            "section-eyebrow mb-2 text-[0.65rem] font-black uppercase tracking-[0.2em] sm:mb-3 sm:text-xs sm:tracking-[0.22em]",
+            isInverse
+              ? "section-eyebrow-inverse text-white/78"
+              : "text-[var(--color-accent)]"
           )}
         >
+          {eyebrowIcon ? <span aria-hidden="true">{eyebrowIcon}</span> : null}
           {eyebrow}
         </p>
       ) : null}

@@ -73,7 +73,7 @@ export function SiteHeader() {
                 </a>
               ))}
               <a
-                className="tap-soft mt-1 rounded-full bg-[var(--color-primary)] px-4 py-3 text-center text-sm font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-0.5"
+                className="button-3d tap-soft mt-1 rounded-full bg-[var(--color-primary)] px-4 py-3 text-center text-sm font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-0.5"
                 href="#sabores"
                 onClick={closeMenu}
               >

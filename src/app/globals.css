@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 :root {
-  --font-display: "Fredoka", "Cooper Black", "Trebuchet MS", sans-serif;
+  --font-display: "Baloo 2", "Fredoka", "Cooper Black", "Trebuchet MS", sans-serif;
   --font-body: "Nunito", "Trebuchet MS", ui-sans-serif, system-ui, sans-serif;
   --color-background: #faf7f2;
   --color-surface: #fffdf8;
@@ -14,6 +14,8 @@
   --color-primary-foreground: #fffaf4;
   --color-accent: #c8794a;
   --color-accent-soft: #f5d7be;
+  --button-shadow: #7f1020;
+  --card-floor: rgb(255 183 196 / 0.74);
   --mavis-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='520' height='380' viewBox='0 0 520 380'%3E%3Cg fill='none' stroke='%23ef6078' stroke-opacity='.24' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='62' cy='64' r='25'/%3E%3Cpath d='M82 52c-11 4-13 16-3 23'/%3E%3Ccircle cx='52' cy='55' r='2.1' fill='%23ef6078' fill-opacity='.24' stroke='none'/%3E%3Ccircle cx='66' cy='71' r='1.9' fill='%23ef6078' fill-opacity='.24' stroke='none'/%3E%3Ccircle cx='74' cy='59' r='1.7' fill='%23ef6078' fill-opacity='.24' stroke='none'/%3E%3Cpath d='M318 47c-8-12-31-5-34 13-2 16 9 30 25 32 18 2 34-11 32-29-.1-10-5-17-12-21l-3-11-7 9z'/%3E%3Cpath d='M306 68c5 5 12 5 17 0'/%3E%3Ccircle cx='462' cy='96' r='21'/%3E%3Cpath d='M479 86c-9 3-11 13-3 19'/%3E%3Cpath d='M132 276c-12-19-42-13-47 10-4 22 13 37 35 36 20-1 35-16 31-36l10-11-16-1c-4-4-8-7-13-9z'/%3E%3Cpath d='M402 250c-7 6-7 20 3 26 11 7 27 0 27-14 0-12-12-19-22-16l-10-9 2 13z'/%3E%3Ccircle cx='411' cy='262' r='1.8' fill='%23ef6078' fill-opacity='.24' stroke='none'/%3E%3Ccircle cx='421' cy='257' r='1.8' fill='%23ef6078' fill-opacity='.24' stroke='none'/%3E%3Ccircle cx='253' cy='188' r='18'/%3E%3Cpath d='M268 179c-8 2-10 11-3 16'/%3E%3C/g%3E%3C/svg%3E");
 }
 
@@ -125,6 +127,118 @@ body {
 
 .sweet-card:hover {
   border-color: color-mix(in srgb, var(--color-accent) 38%, transparent);
+}
+
+.sweet-card {
+  border-color: rgb(239 96 120 / 0.22);
+  border-radius: 1.7rem;
+  box-shadow:
+    0 4px 0 var(--card-floor),
+    0 18px 44px -34px rgb(185 21 42 / 0.42);
+}
+
+.sweet-card:hover {
+  box-shadow:
+    0 6px 0 rgb(255 173 190 / 0.86),
+    0 26px 56px -34px rgb(185 21 42 / 0.55);
+}
+
+.sweet-panel {
+  border-style: dashed;
+  border-color: rgb(239 96 120 / 0.24);
+}
+
+.button-3d {
+  border: 1px solid rgb(185 21 42 / 0.18);
+  box-shadow:
+    0 4px 0 var(--button-shadow),
+    0 18px 34px -24px rgb(185 21 42 / 0.92);
+  transform: translateY(0);
+}
+
+.button-3d:hover {
+  box-shadow:
+    0 5px 0 var(--button-shadow),
+    0 22px 40px -24px rgb(185 21 42 / 0.94);
+}
+
+.button-3d:active {
+  transform: translateY(3px) scale(0.99);
+  box-shadow:
+    0 1px 0 var(--button-shadow),
+    0 10px 24px -22px rgb(185 21 42 / 0.84);
+}
+
+.button-3d-soft {
+  box-shadow:
+    0 3px 0 rgb(255 183 196 / 0.9),
+    0 15px 28px -24px rgb(53 17 20 / 0.34);
+}
+
+.section-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: fit-content;
+  border: 1px dashed rgb(239 96 120 / 0.36);
+  border-radius: 999px;
+  background: rgb(255 215 223 / 0.36);
+  padding: 0.38rem 0.7rem;
+}
+
+.section-eyebrow-inverse {
+  border-color: rgb(255 255 255 / 0.38);
+  background: rgb(255 255 255 / 0.12);
+}
+
+.product-chip {
+  border: 1px dashed currentColor;
+  box-shadow: 0 2px 0 rgb(255 183 196 / 0.75);
+}
+
+.product-chip-classico {
+  background: rgb(255 244 219 / 0.94);
+  color: #9b6218;
+}
+
+.product-chip-recheado {
+  background: rgb(255 215 223 / 0.94);
+  color: var(--color-primary);
+}
+
+.product-chip-lancamento {
+  background: rgb(237 227 255 / 0.94);
+  color: #5b348d;
+}
+
+.cat-peek {
+  position: relative;
+}
+
+.cat-peek::after {
+  content: "🐾";
+  position: absolute;
+  right: 1.25rem;
+  top: -0.85rem;
+  color: rgb(239 96 120 / 0.7);
+  font-size: 1.7rem;
+  line-height: 1;
+  transform: rotate(-7deg);
+}
+
+.section-wave {
+  position: relative;
+}
+
+.section-wave::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 16px;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg width='120' height='16' viewBox='0 0 120 16' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 8C15 0 15 16 30 8C45 0 45 16 60 8C75 0 75 16 90 8C105 0 105 16 120 8' stroke='%23ef6078' stroke-opacity='.18' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: repeat-x;
+  background-size: 120px 16px;
 }
 
 .sweet-final-cta::before {
@@ -313,6 +427,20 @@ body {
 
 .tap-soft:active {
   transform: scale(0.985);
+}
+
+.button-3d.tap-soft:active {
+  transform: translateY(3px) scale(0.99);
+  box-shadow:
+    0 1px 0 var(--button-shadow),
+    0 10px 24px -22px rgb(185 21 42 / 0.84);
+}
+
+.button-3d-soft.tap-soft:active {
+  transform: translateY(2px) scale(0.99);
+  box-shadow:
+    0 1px 0 rgb(255 183 196 / 0.9),
+    0 10px 20px -22px rgb(53 17 20 / 0.26);
 }
 
 @supports (animation-timeline: view()) {

@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function DifferentialsSection() {
   return (
-    <section className="scroll-reveal px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+    <section className="section-wave scroll-reveal px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-start">
           <div>
@@ -19,7 +19,7 @@ export function DifferentialsSection() {
           <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
             {differentials.map((item, index) => (
               <article
-                className="sweet-card tap-soft rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem] sm:p-6"
+                className="sweet-card tap-soft rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-4 shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem] sm:p-6"
                 key={`${item.title}-${index}`}
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--color-accent-soft)] text-xs font-black text-[var(--color-primary)] sm:h-10 sm:w-10 sm:rounded-2xl sm:text-sm">

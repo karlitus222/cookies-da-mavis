@@ -11,13 +11,25 @@ type ProductCardProps = {
   product: Product;
 };
 
+const categoryStyles: Record<string, string> = {
+  "clássico": "product-chip-classico",
+  "lançamento": "product-chip-lancamento",
+  recheado: "product-chip-recheado"
+};
+
+const categoryIcons: Record<string, string> = {
+  "clássico": "🍪",
+  "lançamento": "✨",
+  recheado: "💕"
+};
+
 export function ProductCard({ product }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { addItem } = useCart();
   const descriptionId = `${product.id}-description`;
 
   return (
-    <article className="sweet-card tap-soft group overflow-hidden rounded-[1.25rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
+    <article className="sweet-card tap-soft group overflow-hidden rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem]">
       <div className="relative overflow-hidden">
         <Image
           src={assetPath(product.image.src)}
@@ -27,7 +39,17 @@ export function ProductCard({ product }: ProductCardProps) {
           className="aspect-[4/4.35] w-full bg-[var(--color-background)] object-cover object-center transition duration-500 group-hover:scale-105 sm:aspect-[4/3]"
         />
         {product.category ? (
-          <span className="absolute left-2 top-2 hidden rounded-full bg-[var(--color-surface)]/90 px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-[0.12em] text-[var(--color-primary)] backdrop-blur sm:left-4 sm:top-4 sm:inline-flex sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.18em]">
+          <span
+            className={cn(
+              "product-chip absolute left-2 top-2 inline-flex rounded-full px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-[0.09em] backdrop-blur sm:left-4 sm:top-4 sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.14em]",
+              categoryStyles[product.category.toLocaleLowerCase("pt-BR")] ??
+                "product-chip-recheado"
+            )}
+          >
+            <span aria-hidden="true" className="mr-1">
+              {categoryIcons[product.category.toLocaleLowerCase("pt-BR")] ??
+                "🍪"}
+            </span>
             {product.category}
           </span>
         ) : null}
@@ -63,7 +85,7 @@ export function ProductCard({ product }: ProductCardProps) {
           {isExpanded ? "Mostrar menos" : "Ler mais"}
         </button>
         <button
-          className="tap-soft mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-2 text-[0.72rem] font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-0.5 sm:mt-5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+          className="button-3d tap-soft mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-2 text-[0.72rem] font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-0.5 sm:mt-5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
           onClick={() => addItem(product)}
           type="button"
         >

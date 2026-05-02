@@ -63,12 +63,12 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
 
         <div className="mt-4 flex flex-wrap items-center gap-2.5 sm:gap-3">
           {selectedProduct.price ? (
-            <span className="rounded-full bg-[var(--color-accent-soft)] px-4 py-2 text-sm font-black text-[var(--color-primary)]">
+            <span className="product-chip product-chip-recheado rounded-full px-4 py-2 text-sm font-black">
               {selectedProduct.price}
             </span>
           ) : null}
           <button
-            className="tap-soft inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-xs font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-0.5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+            className="button-3d tap-soft inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-xs font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-0.5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
             onClick={() => addItem(selectedProduct)}
             type="button"
           >
@@ -86,8 +86,8 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
                 className={cn(
                   "tap-soft group w-[5.6rem] shrink-0 snap-start overflow-hidden rounded-2xl border bg-[var(--color-surface)] p-1 transition hover:-translate-y-1 hover:shadow-brand sm:w-auto",
                   isSelected
-                    ? "animate-selected-flavor border-[var(--color-primary)] shadow-brand ring-2 ring-[var(--color-accent)]/30"
-                    : "border-[var(--color-primary)]/10"
+                    ? "animate-selected-flavor border-[var(--color-primary)] border-dashed shadow-brand ring-2 ring-[var(--color-accent)]/30"
+                    : "border-dashed border-[var(--color-primary)]/10"
                 )}
                 key={`${product.id}-${isSelected ? animationTick : "idle"}`}
                 onClick={() => handleSelect(product.id)}

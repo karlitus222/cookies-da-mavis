@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 export function FaqSection() {
   return (
     <section
-      className="scroll-reveal bg-[var(--color-surface)] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="section-wave scroll-reveal bg-[var(--color-surface)] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
     >
       <div className="mx-auto max-w-4xl">
         <SectionHeading

@@ -183,7 +183,7 @@ export function CartDrawer() {
             className={cn(
               "tap-soft inline-flex min-h-12 items-center justify-center rounded-full px-5 py-3 text-center text-sm font-black transition",
               hasItems
-                ? "bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-brand hover:-translate-y-0.5"
+                ? "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
                 : "pointer-events-none bg-[var(--color-primary)]/25 text-[var(--color-muted)]"
             )}
             href={hasItems ? orderHref : "#sabores"}
@@ -206,7 +206,7 @@ export function CartDrawer() {
 
       <button
         aria-label={hasItems ? `Abrir carrinho com ${totalItems} itens` : "Abrir carrinho"}
-        className="tap-soft fixed bottom-4 right-4 z-50 inline-flex min-h-[3.35rem] items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-4 text-sm font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] sm:bottom-5 sm:right-5 sm:min-h-14 sm:px-5"
+        className="button-3d tap-soft fixed bottom-4 right-4 z-50 inline-flex min-h-[3.35rem] items-center justify-center gap-2 rounded-full bg-[var(--color-primary)] px-4 text-sm font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-1 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)] sm:bottom-5 sm:right-5 sm:min-h-14 sm:px-5"
         onClick={() => setIsOpen((current) => !current)}
         type="button"
       >
