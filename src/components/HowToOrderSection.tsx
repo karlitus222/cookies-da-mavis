@@ -10,7 +10,7 @@ const orderHref = createWhatsAppLink(
 export function HowToOrderSection() {
   return (
     <section
-      className="bg-[var(--color-primary)] px-4 py-12 text-[var(--color-primary-foreground)] sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="mavis-pattern-soft bg-[var(--color-primary)] px-4 py-10 text-[var(--color-primary-foreground)] sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="como-pedir"
     >
       <div className="mx-auto max-w-7xl">
@@ -24,7 +24,7 @@ export function HowToOrderSection() {
             />
             <a
               aria-label="Peça aqui pelo WhatsApp"
-              className="mt-5 inline-flex w-fit items-center gap-3 rounded-3xl border border-white/45 bg-white px-4 py-3 text-[#b9152a] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] transition hover:-translate-y-1 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8 sm:px-5 sm:py-4"
+              className="tap-soft mt-5 inline-flex w-fit items-center gap-3 rounded-3xl border border-white/45 bg-white px-4 py-3 text-[#b9152a] shadow-[0_18px_45px_-24px_rgba(255,250,244,0.95)] transition hover:-translate-y-1 hover:scale-[1.02] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-white sm:mt-8 sm:px-5 sm:py-4"
               href={orderHref}
               rel="noreferrer"
               target="_blank"
@@ -46,7 +46,7 @@ export function HowToOrderSection() {
           <ol className="grid gap-3 sm:gap-4">
             {orderSteps.map((step, index) => (
               <li
-                className="rounded-[1.5rem] border border-white/15 bg-white/[0.08] p-4 backdrop-blur sm:rounded-[2rem] sm:p-5"
+                className="tap-soft rounded-[1.5rem] border border-white/15 bg-white/[0.1] p-4 backdrop-blur sm:rounded-[2rem] sm:p-5"
                 key={step.title}
               >
                 <div className="flex gap-4">

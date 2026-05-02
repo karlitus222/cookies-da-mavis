@@ -30,7 +30,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
   );
 
   return (
-    <div className="mt-8 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
+    <div className="mt-7 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
       <div className="relative overflow-hidden rounded-[1.35rem] bg-[var(--color-accent-soft)]/45 sm:rounded-[2rem]">
         <Image
           alt={selectedProduct.image.alt}
@@ -46,8 +46,8 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
       </div>
 
       <div className="mt-4 flex flex-col justify-center sm:mt-5 lg:mt-0">
-        <p className="text-xs font-black uppercase tracking-[0.2em] text-[var(--color-accent)]">
-          Clique nas fotos
+        <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs sm:tracking-[0.2em]">
+          Clique e arraste os sabores
         </p>
         <h3 className="mt-2 font-display text-3xl font-black leading-none text-[var(--color-text)] sm:text-5xl">
           {selectedProduct.name}
@@ -56,7 +56,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
           {selectedProduct.spotlightDescription ?? selectedProduct.description}
         </p>
 
-        <div className="mt-4 flex items-center gap-3">
+        <div className="mt-4 flex flex-wrap items-center gap-2.5 sm:gap-3">
           {selectedProduct.price ? (
             <span className="rounded-full bg-[var(--color-accent-soft)] px-4 py-2 text-sm font-black text-[var(--color-primary)]">
               {selectedProduct.price}
@@ -67,7 +67,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
           </ButtonLink>
         </div>
 
-        <div className="mt-5 grid grid-cols-3 gap-2 sm:grid-cols-6 sm:gap-3">
+        <div className="mobile-pill-scroll mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:gap-3 sm:overflow-visible sm:pb-0">
           {products.map((product) => {
             const isSelected = product.id === selectedProduct.id;
 
@@ -75,7 +75,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
               <button
                 aria-pressed={isSelected}
                 className={cn(
-                  "group overflow-hidden rounded-2xl border bg-[var(--color-surface)] p-1 transition hover:-translate-y-1 hover:shadow-brand",
+                  "tap-soft group w-[5.6rem] shrink-0 snap-start overflow-hidden rounded-2xl border bg-[var(--color-surface)] p-1 transition hover:-translate-y-1 hover:shadow-brand sm:w-auto",
                   isSelected
                     ? "border-[var(--color-primary)] shadow-brand"
                     : "border-[var(--color-primary)]/10"

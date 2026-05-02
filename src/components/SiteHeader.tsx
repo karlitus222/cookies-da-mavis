@@ -52,12 +52,12 @@ export function SiteHeader() {
       </div>
 
       <nav
-        className="flex gap-2 overflow-x-auto border-t border-[var(--color-primary)]/10 px-3 py-1.5 text-xs font-bold text-[var(--color-muted)] md:hidden"
+        className="mobile-pill-scroll flex snap-x gap-2 overflow-x-auto border-t border-[var(--color-primary)]/10 px-3 py-2 text-xs font-black text-[var(--color-muted)] md:hidden"
         aria-label="Menu principal mobile"
       >
         {navItems.map((item) => (
           <a
-            className="shrink-0 rounded-full px-3 py-1.5 transition hover:bg-[var(--color-surface)] hover:text-[var(--color-primary)]"
+            className="tap-soft shrink-0 snap-start rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/72 px-3.5 py-2 transition hover:bg-[var(--color-surface)] hover:text-[var(--color-primary)]"
             href={item.href}
             key={item.href}
           >

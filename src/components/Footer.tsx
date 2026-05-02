@@ -4,7 +4,7 @@ import { assetPath } from "@/lib/assetPath";
 
 export function Footer() {
   return (
-    <footer className="border-t border-[var(--color-primary)]/10 bg-[var(--color-surface)] px-4 py-10 sm:px-6 lg:px-8">
+    <footer className="mavis-pattern-soft border-t border-[var(--color-primary)]/10 bg-[var(--color-surface)] px-4 py-10 sm:px-6 lg:px-8">
       <div className="mx-auto grid max-w-7xl gap-8 md:grid-cols-[1fr_1fr_1fr]">
         <div>
           <div className="flex items-center gap-3">
@@ -73,11 +73,11 @@ export function Footer() {
             </a>
           </p>
           <p>
-            <strong className="text-[var(--color-text)]">Regiao:</strong>{" "}
+            <strong className="text-[var(--color-text)]">Região:</strong>{" "}
             {brandInfo.serviceRegion}
           </p>
           <p>
-            <strong className="text-[var(--color-text)]">Horario:</strong>{" "}
+            <strong className="text-[var(--color-text)]">Horário:</strong>{" "}
             {brandInfo.serviceHours}
           </p>
         </address>

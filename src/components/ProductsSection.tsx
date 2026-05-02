@@ -9,7 +9,7 @@ import { SectionHeading } from "./SectionHeading";
 export function ProductsSection() {
   return (
     <section
-      className="bg-[var(--color-surface)] px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="mavis-pattern-soft bg-[var(--color-surface)] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="sabores"
     >
       <div className="mx-auto max-w-7xl">
@@ -26,7 +26,7 @@ export function ProductsSection() {
 
         <FlavorShowcase products={products} />
 
-        <div className="mt-7 grid grid-cols-2 gap-3 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-10 sm:gap-6 md:grid-cols-2 xl:grid-cols-3">
           {products.map((product, index) => (
             <div
               className={`animate-rise-in ${
@@ -40,7 +40,7 @@ export function ProductsSection() {
         </div>
 
         {combos.length > 0 ? (
-          <div className="mt-10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-4 sm:mt-16 sm:rounded-[2rem] sm:p-8">
+          <div className="mt-10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/92 p-4 shadow-sm sm:mt-16 sm:rounded-[2rem] sm:p-8">
             <SectionHeading
               eyebrow="Especiais"
               title="Para eventos, presentes e lembrancinhas"
@@ -49,7 +49,7 @@ export function ProductsSection() {
             <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-2">
               {combos.map((combo) => (
                 <article
-                  className="overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm sm:rounded-3xl"
+                  className="tap-soft overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm sm:rounded-3xl"
                   key={combo.id}
                 >
                   {combo.image ? (

@@ -26,7 +26,7 @@ const themeStyle = {
 
 export default function Home() {
   return (
-    <main style={themeStyle}>
+    <main className="mavis-page" style={themeStyle}>
       <SiteHeader />
       <Hero />
       <AboutSection />

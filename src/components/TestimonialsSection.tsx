@@ -5,7 +5,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function TestimonialsSection() {
   return (
-    <section className="px-4 py-12 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+    <section className="mavis-pattern-soft px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <SectionHeading
@@ -18,7 +18,7 @@ export function TestimonialsSection() {
         <div className="mt-7 grid gap-4 sm:mt-10 sm:gap-5 md:grid-cols-2">
           {testimonials.map((testimonial) => (
             <figure
-              className="overflow-hidden rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-35px_rgba(185,21,42,0.55)] sm:rounded-[2rem] sm:p-4"
+              className="tap-soft overflow-hidden rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-3 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-[0_24px_60px_-35px_rgba(185,21,42,0.55)] sm:rounded-[2rem] sm:p-4"
               key={testimonial.id}
             >
               {testimonial.image ? (

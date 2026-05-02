@@ -15,7 +15,7 @@ export function Hero() {
 
   return (
     <section
-      className="relative isolate overflow-hidden px-4 py-9 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="mavis-pattern-soft relative isolate overflow-hidden px-4 py-9 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="inicio"
     >
       <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_34%),linear-gradient(135deg,var(--color-background),var(--color-surface))]" />
@@ -40,7 +40,7 @@ export function Hero() {
           </div>
 
           <dl className="mt-6 grid max-w-2xl gap-2 sm:mt-10 sm:grid-cols-3 sm:gap-3">
-            <div className="rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/80 p-3 sm:rounded-3xl sm:p-4">
+            <div className="tap-soft rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/86 p-3 shadow-sm sm:rounded-3xl sm:p-4">
               <dt className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs">
                 Atendimento
               </dt>
@@ -48,7 +48,7 @@ export function Hero() {
                 {brandInfo.serviceRegion}
               </dd>
             </div>
-            <div className="rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/80 p-3 sm:rounded-3xl sm:p-4">
+            <div className="tap-soft rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/86 p-3 shadow-sm sm:rounded-3xl sm:p-4">
               <dt className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs">
                 Contato
               </dt>
@@ -56,7 +56,7 @@ export function Hero() {
                 {brandInfo.whatsappDisplay}
               </dd>
             </div>
-            <div className="rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/80 p-3 sm:rounded-3xl sm:p-4">
+            <div className="tap-soft rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/86 p-3 shadow-sm sm:rounded-3xl sm:p-4">
               <dt className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs">
                 Destaque
               </dt>

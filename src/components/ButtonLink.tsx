@@ -27,7 +27,7 @@ export function ButtonLink({
   return (
     <a
       className={cn(
-        "inline-flex items-center justify-center rounded-full px-5 py-3 text-sm font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]",
+        "tap-soft inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]",
         variants[variant],
         className
       )}

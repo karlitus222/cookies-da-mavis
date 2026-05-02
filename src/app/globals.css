@@ -14,6 +14,7 @@
   --color-primary-foreground: #fffaf4;
   --color-accent: #c8794a;
   --color-accent-soft: #f5d7be;
+  --mavis-pattern: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180' viewBox='0 0 180 180'%3E%3Cg fill='none' stroke='%23ef6078' stroke-opacity='.18' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='36' cy='38' r='19'/%3E%3Cpath d='M51 30c-8 2-10 12-2 17'/%3E%3Ccircle cx='28' cy='32' r='1.9' fill='%23ef6078' fill-opacity='.18' stroke='none'/%3E%3Ccircle cx='38' cy='43' r='1.7' fill='%23ef6078' fill-opacity='.18' stroke='none'/%3E%3Ccircle cx='45' cy='34' r='1.4' fill='%23ef6078' fill-opacity='.18' stroke='none'/%3E%3Cpath d='M111 31c-7-10-26-4-28 11-2 13 7 25 20 26 15 2 28-9 27-23-.1-8-4-14-10-17l-2-9-6 7z'/%3E%3Cpath d='M102 49c4 4 10 4 14 0'/%3E%3Cpath d='M83 138c-11-17-36-12-40 8-3 18 11 31 29 30 17-1 29-14 26-30l8-9-13-1c-3-4-6-6-10-8z'/%3E%3Cpath d='M139 116c-6 5-6 16 2 21 9 6 22 0 22-11 0-10-10-16-18-13l-8-7 2 10z'/%3E%3Ccircle cx='145' cy='127' r='1.5' fill='%23ef6078' fill-opacity='.18' stroke='none'/%3E%3Ccircle cx='153' cy='123' r='1.5' fill='%23ef6078' fill-opacity='.18' stroke='none'/%3E%3C/g%3E%3C/svg%3E");
 }
 
 * {
@@ -30,6 +31,34 @@ body {
   color: var(--color-text);
   font-family: var(--font-body);
   text-rendering: optimizeLegibility;
+}
+
+.mavis-page {
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgb(255 215 223 / 0.42), transparent 30rem),
+    radial-gradient(circle at 92% 18%, rgb(239 96 120 / 0.12), transparent 24rem),
+    var(--color-background);
+}
+
+.mavis-pattern-soft {
+  background-image: var(--mavis-pattern);
+  background-position: center top;
+  background-size: 180px 180px;
+}
+
+.mavis-glass {
+  background: color-mix(in srgb, var(--color-surface) 88%, transparent);
+  backdrop-filter: blur(18px);
+}
+
+.mobile-pill-scroll {
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+
+.mobile-pill-scroll::-webkit-scrollbar {
+  display: none;
 }
 
 ::selection {
@@ -117,6 +146,17 @@ body {
   transform: scaleX(1);
 }
 
+.tap-soft {
+  transition:
+    transform 220ms ease,
+    box-shadow 220ms ease,
+    border-color 220ms ease;
+}
+
+.tap-soft:active {
+  transform: scale(0.985);
+}
+
 .stagger-1 {
   animation-delay: 90ms;
 }
@@ -141,5 +181,11 @@ body {
     animation-iteration-count: 1 !important;
     scroll-behavior: auto !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+@media (max-width: 640px) {
+  .mavis-pattern-soft {
+    background-size: 138px 138px;
   }
 }
