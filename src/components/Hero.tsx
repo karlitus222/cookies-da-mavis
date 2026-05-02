@@ -18,7 +18,6 @@ export function Hero() {
       className="mavis-pattern-soft relative isolate overflow-hidden px-4 py-7 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="inicio"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_30%),linear-gradient(135deg,transparent,rgba(255,255,255,0.42))]" />
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-[var(--color-accent)]/10 blur-3xl" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1fr_0.9fr] lg:gap-10">

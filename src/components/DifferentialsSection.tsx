@@ -4,7 +4,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function DifferentialsSection() {
   return (
-    <section className="px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
+    <section className="scroll-reveal px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
       <div className="mx-auto max-w-7xl">
         <div className="grid gap-6 sm:gap-8 lg:grid-cols-[0.8fr_1fr] lg:items-start">
           <div>

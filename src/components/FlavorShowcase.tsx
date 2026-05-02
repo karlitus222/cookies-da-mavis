@@ -16,6 +16,7 @@ type FlavorShowcaseProps = {
 export function FlavorShowcase({ products }: FlavorShowcaseProps) {
   const initialProduct = products.find((product) => product.featured) ?? products[0];
   const [selectedId, setSelectedId] = useState(initialProduct?.id ?? "");
+  const [animationTick, setAnimationTick] = useState(0);
   if (!initialProduct) {
     return null;
   }
@@ -28,15 +29,21 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
       productName: selectedProduct.name
     })
   );
+  const handleSelect = (productId: string) => {
+    setSelectedId(productId);
+    setAnimationTick((current) => current + 1);
+  };
 
   return (
-    <div className="mt-7 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
-      <div className="relative overflow-hidden rounded-[1.35rem] bg-[var(--color-accent-soft)]/45 sm:rounded-[2rem]">
+    <div className="scroll-reveal mt-7 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
+      <div
+        className="animate-flavor-swap relative overflow-hidden rounded-[1.35rem] bg-[var(--color-accent-soft)]/45 sm:rounded-[2rem]"
+        key={`image-${selectedProduct.id}-${animationTick}`}
+      >
         <Image
           alt={selectedProduct.image.alt}
-          className="animate-flavor-pop aspect-[4/3.6] w-full object-cover sm:aspect-[4/3]"
+          className="aspect-[4/3.6] w-full object-cover sm:aspect-[4/3]"
           height={760}
-          key={selectedProduct.id}
           src={assetPath(selectedProduct.image.src)}
           width={900}
         />
@@ -49,10 +56,16 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
         <p className="text-[0.68rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs sm:tracking-[0.2em]">
           Clique e arraste os sabores
         </p>
-        <h3 className="mt-2 font-display text-3xl font-black leading-none text-[var(--color-text)] sm:text-5xl">
+        <h3
+          className="animate-flavor-detail mt-2 font-display text-3xl font-black leading-none text-[var(--color-text)] sm:text-5xl"
+          key={`title-${selectedProduct.id}-${animationTick}`}
+        >
           {selectedProduct.name}
         </h3>
-        <p className="mt-3 text-sm leading-6 text-[var(--color-muted)] sm:text-lg sm:leading-8">
+        <p
+          className="animate-flavor-detail mt-3 text-sm leading-6 text-[var(--color-muted)] sm:text-lg sm:leading-8"
+          key={`description-${selectedProduct.id}-${animationTick}`}
+        >
           {selectedProduct.spotlightDescription ?? selectedProduct.description}
         </p>
 
@@ -77,11 +90,11 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
                 className={cn(
                   "tap-soft group w-[5.6rem] shrink-0 snap-start overflow-hidden rounded-2xl border bg-[var(--color-surface)] p-1 transition hover:-translate-y-1 hover:shadow-brand sm:w-auto",
                   isSelected
-                    ? "border-[var(--color-primary)] shadow-brand"
+                    ? "animate-selected-flavor border-[var(--color-primary)] shadow-brand ring-2 ring-[var(--color-accent)]/30"
                     : "border-[var(--color-primary)]/10"
                 )}
                 key={product.id}
-                onClick={() => setSelectedId(product.id)}
+                onClick={() => handleSelect(product.id)}
                 type="button"
               >
                 <Image

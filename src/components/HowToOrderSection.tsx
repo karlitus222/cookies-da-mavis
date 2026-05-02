@@ -10,7 +10,7 @@ const orderHref = createWhatsAppLink(
 export function HowToOrderSection() {
   return (
     <section
-      className="bg-[var(--color-primary)] px-4 py-10 text-[var(--color-primary-foreground)] sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="scroll-reveal bg-[var(--color-primary)] px-4 py-10 text-[var(--color-primary-foreground)] sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="como-pedir"
     >
       <div className="mx-auto max-w-7xl">

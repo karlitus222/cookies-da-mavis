@@ -9,7 +9,7 @@ import { SectionHeading } from "./SectionHeading";
 export function ProductsSection() {
   return (
     <section
-      className="bg-[var(--color-surface)] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="scroll-reveal bg-[var(--color-surface)] px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="sabores"
     >
       <div className="mx-auto max-w-7xl">
