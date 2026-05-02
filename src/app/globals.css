@@ -132,9 +132,24 @@ body {
 .sweet-card {
   border-color: rgb(239 96 120 / 0.22);
   border-radius: 1.7rem;
+  contain: paint;
+  transform: translateZ(0);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
   box-shadow:
     0 4px 0 var(--card-floor),
     0 18px 44px -34px rgb(185 21 42 / 0.42);
+}
+
+.sweet-card::before,
+.sweet-panel::before,
+.sweet-panel::after,
+.sweet-final-cta::before,
+.sweet-final-cta::after {
+  border-radius: inherit;
+}
+
+.sweet-card img {
+  transform: translateZ(0);
 }
 
 .sweet-card:hover {

@@ -20,13 +20,13 @@ export function ProductCard({ product }: ProductCardProps) {
 
   return (
     <article className="sweet-card tap-soft group overflow-hidden rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem]">
-      <div className="relative overflow-hidden">
+      <div className="relative overflow-hidden rounded-t-[1.65rem] sm:rounded-t-[1.95rem]">
         <Image
           src={assetPath(product.image.src)}
           alt={product.image.alt}
           width={640}
           height={800}
-          className="aspect-[4/4.35] w-full bg-[var(--color-background)] object-cover object-center transition duration-500 group-hover:scale-105 sm:aspect-[4/3]"
+          className="aspect-[4/4.35] w-full rounded-t-[1.65rem] bg-[var(--color-background)] object-cover object-center transition duration-500 group-hover:scale-105 sm:aspect-[4/3] sm:rounded-t-[1.95rem]"
         />
         {product.category && categoryMeta ? (
           <span

@@ -15,13 +15,15 @@ export function ComboCard({ combo }: ComboCardProps) {
   return (
     <article className="sweet-card tap-soft overflow-hidden rounded-[1.7rem] bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-3xl">
       {combo.image ? (
-        <Image
-          src={assetPath(combo.image.src)}
-          alt={combo.image.alt}
-          width={720}
-          height={520}
-          className="aspect-[4/2.7] w-full object-cover sm:aspect-[4/3]"
-        />
+        <div className="overflow-hidden rounded-t-[1.65rem] sm:rounded-t-[1.95rem]">
+          <Image
+            src={assetPath(combo.image.src)}
+            alt={combo.image.alt}
+            width={720}
+            height={520}
+            className="aspect-[4/2.7] w-full rounded-t-[1.65rem] object-cover sm:aspect-[4/3] sm:rounded-t-[1.95rem]"
+          />
+        </div>
       ) : null}
       <div className="p-4 sm:p-5">
         <h3 className="font-display text-xl font-black sm:text-2xl">
