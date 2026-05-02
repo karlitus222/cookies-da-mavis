@@ -54,7 +54,7 @@ export const brandInfo = {
   instagramHandle: "@cookiesmavis",
   instagramUrl: "https://www.instagram.com/cookiesmavis/",
   linktreeUrl: "https://linktr.ee/cookiesmaviss",
-  siteUrl: "https://karlitus222.github.io/cookies-da-mavis/",
+  siteUrl: "https://cookies-da-mavis.vercel.app/",
   cardapioUrl:
     "https://drive.google.com/file/d/1ZgvTmLlGmkLf3HWaejXU03gdc73hI9Er/view?usp=sharing",
   serviceRegion: "Teresina-PI e Timon-MA",
@@ -264,16 +264,22 @@ export const orderSteps = [
 
 export const testimonials: Testimonial[] = [
   {
-    id: "depoimento-placeholder-1",
-    name: "Cliente autorizado",
-    text: "Espaço reservado para um depoimento real de cliente.",
-    isPlaceholder: true
+    id: "feedback-whatsapp-cliente-fiel",
+    name: "Feedback via WhatsApp",
+    text: "Nossa, muito bons mesmo. Tô apaixonadaaa! Vou virar cliente fiel agora.",
+    image: {
+      src: "/images/brand/feedback-whatsapp-1.jpeg",
+      alt: "Print de cliente elogiando os cookies e dizendo que vai virar cliente fiel"
+    }
   },
   {
-    id: "depoimento-placeholder-2",
-    name: "Cliente autorizado",
-    text: "Substitua este texto por uma avaliação verdadeira antes de publicar.",
-    isPlaceholder: true
+    id: "feedback-whatsapp-cookie-gostoso",
+    name: "Feedback via WhatsApp",
+    text: "Meu deus, o cookie mais gostoso do mundo. Tu arrasa.",
+    image: {
+      src: "/images/brand/feedback-whatsapp-2.jpeg",
+      alt: "Print de cliente elogiando o sabor dos cookies da Cookies da Mavis"
+    }
   }
 ];
 
