@@ -5,28 +5,18 @@ import { useState } from "react";
 import type { Product } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
+import { getProductCategoryMeta } from "@/lib/productCategory";
 import { useCart } from "./CartProvider";
 
 type ProductCardProps = {
   product: Product;
 };
 
-const categoryStyles: Record<string, string> = {
-  "clássico": "product-chip-classico",
-  "lançamento": "product-chip-lancamento",
-  recheado: "product-chip-recheado"
-};
-
-const categoryIcons: Record<string, string> = {
-  "clássico": "🍪",
-  "lançamento": "✨",
-  recheado: "💕"
-};
-
 export function ProductCard({ product }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
   const { addItem } = useCart();
   const descriptionId = `${product.id}-description`;
+  const categoryMeta = getProductCategoryMeta(product.category);
 
   return (
     <article className="sweet-card tap-soft group overflow-hidden rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem]">
@@ -38,17 +28,15 @@ export function ProductCard({ product }: ProductCardProps) {
           height={800}
           className="aspect-[4/4.35] w-full bg-[var(--color-background)] object-cover object-center transition duration-500 group-hover:scale-105 sm:aspect-[4/3]"
         />
-        {product.category ? (
+        {product.category && categoryMeta ? (
           <span
             className={cn(
               "product-chip absolute left-2 top-2 inline-flex rounded-full px-2 py-0.5 text-[0.55rem] font-black uppercase tracking-[0.09em] backdrop-blur sm:left-4 sm:top-4 sm:px-3 sm:py-1 sm:text-xs sm:tracking-[0.14em]",
-              categoryStyles[product.category.toLocaleLowerCase("pt-BR")] ??
-                "product-chip-recheado"
+              categoryMeta.className
             )}
           >
             <span aria-hidden="true" className="mr-1">
-              {categoryIcons[product.category.toLocaleLowerCase("pt-BR")] ??
-                "🍪"}
+              {categoryMeta.icon}
             </span>
             {product.category}
           </span>

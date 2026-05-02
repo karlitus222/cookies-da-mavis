@@ -1,97 +1,178 @@
-# Landing page para confeitaria de cookies
+# Cookies da Mavis
 
-Projeto em Next.js, React, TypeScript, Tailwind CSS e App Router para a Cookies da Mavis, usando logo, fotos, Instagram, WhatsApp e sabores reais fornecidos.
+Landing page profissional e responsiva para a **Cookies da Mavis**, feita com materiais reais da marca: logo, fotos dos cookies, cardápio, cores, Instagram, WhatsApp e feedbacks de clientes.
 
-## Como rodar
+Site em produção: [cookies-da-mavis.vercel.app](https://cookies-da-mavis.vercel.app/)
+
+## O Que O Site Faz
+
+- Apresenta a marca, a proposta artesanal e os sabores reais da Cookies da Mavis.
+- Mostra fotos reais dos cookies, especiais, feedbacks e informações de atendimento.
+- Permite adicionar sabores, cookitos e mini cookies para eventos em um carrinho.
+- Gera uma mensagem pronta para WhatsApp com itens, quantidades e total aproximado quando houver preço.
+- Funciona bem em mobile e desktop, com layout estático otimizado para hospedagem em Vercel, Netlify, Cloudflare Pages ou GitHub Pages.
+
+## Principais Funções
+
+- `Carrinho inteligente`: soma quantidades, remove itens e monta a mensagem do pedido.
+- `Pedido pelo WhatsApp`: abre `wa.me` com texto pré-preenchido e lista de produtos.
+- `Dados centralizados`: textos, contatos, sabores, preços, combos, FAQ e depoimentos ficam em `src/data/site.ts`.
+- `Cards editáveis`: produtos e especiais são gerados por arrays, sem precisar duplicar HTML.
+- `Identidade visual da marca`: paleta rosa/vermelho, estampa de cookies/gatinhos, fotos reais e logo da Mavis.
+- `Site estático`: `next build` exporta a pasta `out/`, pronta para deploy.
+
+## Tecnologias
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- Next Image
+- Static Export
+
+## Estrutura Do Projeto
+
+```text
+src/
+  app/
+    globals.css        estilos globais, tema, animações e utilitários visuais
+    layout.tsx         fontes, metadata e HTML base
+    page.tsx           composição principal da landing page
+  components/
+    CartDrawer.tsx     carrinho flutuante e checkout por WhatsApp
+    CartProvider.tsx   estado global do carrinho
+    ProductCard.tsx    card dos sabores
+    ComboCard.tsx      card dos produtos especiais
+    FlavorShowcase.tsx destaque interativo dos sabores
+    Hero.tsx           primeira dobra da página
+    SiteHeader.tsx     barra superior e menu
+  data/
+    site.ts            dados editáveis da marca, produtos, combos e FAQ
+  lib/
+    assetPath.ts       ajuste de caminhos para deploy estático
+    price.ts           parse e formatação de moeda brasileira
+    productCategory.ts metadata visual dos chips de categoria
+    whatsapp.ts        criação de mensagens e links do WhatsApp
+public/
+  images/brand/        logo, fotos, feedbacks e artes reais
+```
+
+## Como Rodar Localmente
 
 ```bash
 npm install
 npm run dev
 ```
 
-Depois acesse `http://localhost:3000`.
+Acesse:
 
-## Como gerar a versao estatica
-
-```bash
-npm run build
+```text
+http://localhost:3000
 ```
 
-O Next.js vai gerar a pasta `out/`. Essa pasta pode ser publicada como site estatico.
-
-Para testar a versao estatica localmente:
+## Comandos Úteis
 
 ```bash
+npm run dev
+npm run lint
+npm run typecheck
 npm run build
 npm run start
 ```
 
-## Hospedagem
+`npm run build` gera a versão estática em `out/`.
 
-Vercel:
+## Onde Editar Textos, Sabores E Contatos
 
-- Build command: `npm run build`
-- Output directory: `out`
+Edite [src/data/site.ts](src/data/site.ts).
 
-Netlify:
+- `brandInfo`: nome, WhatsApp, Instagram, região, horário, textos principais, links e paleta.
+- `products`: sabores, descrições, preços, categorias e imagens.
+- `combos`: cookitos, mini cookies para eventos e produtos especiais.
+- `differentials`: diferenciais reais da produção.
+- `testimonials`: prints e textos dos feedbacks.
+- `faq`: perguntas frequentes e respostas.
 
-- O arquivo `netlify.toml` ja configura `npm run build` e publica `out`.
-
-Cloudflare Pages:
-
-- Build command: `npm run build`
-- Build output directory: `out`
-
-GitHub Pages:
-
-- Build command: `npm run build`
-- Publicar a pasta `out`
-- O arquivo `public/.nojekyll` evita problema com a pasta `_next` no GitHub Pages.
-- O workflow `.github/workflows/deploy-pages.yml` publica automaticamente quando houver push na branch `main`.
-- Para repositórios de projeto, o workflow usa `NEXT_PUBLIC_BASE_PATH` para o site funcionar em `https://USUARIO.github.io/NOME-DO-REPO/`.
-
-## Onde editar os dados reais
-
-Edite o arquivo `src/data/site.ts`.
-
-Ali ficam:
-
-- `brandInfo`: nome da marca, WhatsApp, Instagram, horario, regiao, textos e paleta.
-- `products`: sabores reais, descricoes, precos e fotos do cardapio.
-- `combos`: combos ou produtos especiais, se existirem.
-- `differentials`: diferenciais reais da producao.
-- `testimonials`: depoimentos reais ou placeholders editaveis.
-- `faq`: perguntas e respostas conforme a forma real de atendimento.
-
-## Onde colocar imagens
-
-Coloque logo e fotos reais em `public/images`.
-
-Exemplos de caminhos para usar em `src/data/site.ts`:
+Exemplo de produto:
 
 ```ts
-logo: {
-  src: "/images/logo.png",
-  alt: "Logo da Nome da Marca"
+{
+  id: "red-ninho",
+  name: "Red Ninho",
+  description: "Massa macia de Red Velvet com recheio cremoso de leite Ninho.",
+  price: "R$ 12,00",
+  image: {
+    src: "/images/brand/flavor-red-ninho-clean.jpeg",
+    alt: "Cookie Red Ninho da Cookies da Mavis"
+  },
+  category: "Recheado"
 }
 ```
+
+## Como Trocar Fotos
+
+Coloque as imagens em:
+
+```text
+public/images/brand/
+```
+
+Depois atualize o caminho no `src/data/site.ts`:
 
 ```ts
 image: {
-  src: "/images/cookie-red-velvet.jpg",
-  alt: "Cookie red velvet da Nome da Marca"
+  src: "/images/brand/nova-foto.jpeg",
+  alt: "Descrição clara da foto para acessibilidade"
 }
 ```
 
-## Valores extraidos do cardapio
+## Como O Carrinho Funciona
 
-- Tradicional: R$ 8,00
-- Tradicional com Nutella: R$ 12,00
-- Red Velvet: R$ 8,00
-- Red Ninho: R$ 12,00
-- Red Nutella: R$ 12,00
-- Oreo: R$ 8,00
+O carrinho fica em `CartProvider` e `CartDrawer`.
 
-## Observacao importante
+- `addItem`: adiciona produto ou aumenta quantidade se ele já existir.
+- `increment`: aumenta a quantidade.
+- `decrement`: diminui a quantidade e remove quando chega a zero.
+- `removeItem`: remove um item específico.
+- `clear`: limpa o carrinho.
+- `createCartOrderMessage`: monta a mensagem final para WhatsApp.
 
-Depoimentos e formas de pagamento ainda estao como campos editaveis porque nao foram confirmados nos materiais enviados.
+Quando todos os itens têm preço, o carrinho mostra total aproximado. Quando algum item depende de orçamento, como mini cookies para evento, o total aparece como `a confirmar`.
+
+## Deploy
+
+### Vercel
+
+O projeto já está publicado na Vercel.
+
+Configuração:
+
+```text
+Build command: npm run build
+Output directory: out
+```
+
+### Netlify
+
+O arquivo `netlify.toml` já define build e pasta de publicação.
+
+### GitHub Pages
+
+O workflow em `.github/workflows/deploy-pages.yml` publica automaticamente quando houver push na branch `main`.
+
+## Checklist Antes De Publicar Mudanças
+
+```bash
+npm run typecheck
+npm run lint
+npm run build
+```
+
+Depois faça commit, push e deploy.
+
+## Observações
+
+- Não use imagens aleatórias de cookies se houver fotos reais da Mavis.
+- Não coloque avaliações fictícias como se fossem reais.
+- Mantenha preços, sabores, WhatsApp e região de atendimento atualizados em `src/data/site.ts`.
+- Para mudar a identidade visual, edite primeiro a paleta em `brandInfo.palette` e depois ajuste os estilos globais.

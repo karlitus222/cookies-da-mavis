@@ -2,34 +2,17 @@
 
 import { useMemo, useState } from "react";
 import { brandInfo } from "@/data/site";
-import { createCartOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { cn } from "@/lib/cn";
+import { formatBrazilianCurrency, parseBrazilianCurrency } from "@/lib/price";
+import { createCartOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { useCart } from "./CartProvider";
-
-function parsePrice(price?: string) {
-  if (!price) {
-    return null;
-  }
-
-  const normalized = price.replace(/[^\d,]/g, "").replace(",", ".");
-  const parsed = Number(normalized);
-
-  return Number.isFinite(parsed) ? parsed : null;
-}
-
-function formatCurrency(value: number) {
-  return new Intl.NumberFormat("pt-BR", {
-    currency: "BRL",
-    style: "currency"
-  }).format(value);
-}
 
 export function CartDrawer() {
   const { clear, decrement, increment, items, removeItem, totalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
 
   const total = useMemo(() => {
-    const prices = items.map((item) => parsePrice(item.price));
+    const prices = items.map((item) => parseBrazilianCurrency(item.price));
 
     if (prices.some((price) => price === null)) {
       return null;
@@ -42,7 +25,7 @@ export function CartDrawer() {
     }, 0);
   }, [items]);
 
-  const formattedTotal = total === null ? null : formatCurrency(total);
+  const formattedTotal = total === null ? null : formatBrazilianCurrency(total);
   const orderHref = createWhatsAppLink(
     brandInfo.whatsappNumber,
     createCartOrderMessage({
