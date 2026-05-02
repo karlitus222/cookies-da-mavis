@@ -7,7 +7,12 @@ import {
   useState,
   type ReactNode
 } from "react";
-import type { Product } from "@/data/site";
+
+export type OrderableCartProduct = {
+  id: string;
+  name: string;
+  price?: string;
+};
 
 export type CartItem = {
   id: string;
@@ -19,7 +24,7 @@ export type CartItem = {
 type CartContextValue = {
   items: CartItem[];
   totalItems: number;
-  addItem: (product: Product) => void;
+  addItem: (product: OrderableCartProduct) => void;
   increment: (id: string) => void;
   decrement: (id: string) => void;
   removeItem: (id: string) => void;
@@ -31,7 +36,7 @@ const CartContext = createContext<CartContextValue | null>(null);
 export function CartProvider({ children }: { children: ReactNode }) {
   const [items, setItems] = useState<CartItem[]>([]);
 
-  const addItem = (product: Product) => {
+  const addItem = (product: OrderableCartProduct) => {
     setItems((current) => {
       const existingItem = current.find((item) => item.id === product.id);
 

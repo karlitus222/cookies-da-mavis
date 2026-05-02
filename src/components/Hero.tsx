@@ -1,17 +1,12 @@
 import Image from "next/image";
 import { brandInfo, products } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
-import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { ButtonLink } from "./ButtonLink";
 import { EditingHint } from "./EditingHint";
 
-const orderHref = createWhatsAppLink(
-  brandInfo.whatsappNumber,
-  createOrderMessage({ brandName: brandInfo.name })
-);
-
 export function Hero() {
   const featuredProduct = products.find((product) => product.featured);
+  const mobileHeroImage = featuredProduct?.image ?? brandInfo.heroImage;
 
   return (
     <section
@@ -23,9 +18,23 @@ export function Hero() {
       <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1fr_0.9fr] lg:gap-10">
         <div className="animate-rise-in">
           <EditingHint>conteudo aguardando materiais reais</EditingHint>
-          <h1 className="mt-3 max-w-4xl font-display text-[2.15rem] font-black leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
+          <div className="mb-3 flex items-center gap-3 rounded-[1.5rem] border border-white/65 bg-white/52 p-2 pr-3 shadow-sm backdrop-blur sm:hidden">
+            <Image
+              alt={mobileHeroImage.alt}
+              className="h-16 w-16 shrink-0 rounded-[1.15rem] object-cover shadow-sm"
+              height={120}
+              src={assetPath(mobileHeroImage.src)}
+              width={120}
+            />
+            <p className="font-display text-[0.95rem] font-bold leading-tight text-[var(--color-text)]">
+              Cookie recheado, foto real e sabor da Mavis.
+            </p>
+          </div>
+          <h1 className="mt-3 max-w-4xl font-display text-[2rem] font-bold leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
             <span className="sm:hidden">
-              <span className="hero-word">Cookies</span> artesanais da Mavis
+              <span className="hero-word">Amor</span>,{" "}
+              <span className="hero-word">cookies</span> e{" "}
+              <span className="hero-word">miados</span> em cada mordida
             </span>
             <span className="hidden sm:inline">
               <span className="hero-word">Amor</span>,{" "}
@@ -40,10 +49,19 @@ export function Hero() {
             <span className="hidden sm:inline">{brandInfo.heroSubtitle}</span>
           </p>
           <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:flex-row sm:gap-3">
-            <ButtonLink href="#sabores" variant="secondary">
+            <ButtonLink
+              className="border-transparent bg-white/58 text-[var(--color-muted)] shadow-none hover:bg-white hover:text-[var(--color-primary)]"
+              href="#sabores"
+              variant="secondary"
+            >
               Ver sabores
             </ButtonLink>
-            <ButtonLink href={orderHref}>Fazer pedido</ButtonLink>
+            <ButtonLink
+              className="shadow-[0_22px_46px_-24px_rgba(185,21,42,0.92)]"
+              href="#sabores"
+            >
+              Fazer pedido
+            </ButtonLink>
           </div>
 
           <dl className="mt-6 hidden max-w-2xl gap-2 sm:mt-10 sm:grid sm:grid-cols-3 sm:gap-3">

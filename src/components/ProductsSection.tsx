@@ -1,6 +1,5 @@
-import Image from "next/image";
 import { combos, products } from "@/data/site";
-import { assetPath } from "@/lib/assetPath";
+import { ComboCard } from "./ComboCard";
 import { EditingHint } from "./EditingHint";
 import { FlavorShowcase } from "./FlavorShowcase";
 import { ProductCard } from "./ProductCard";
@@ -48,33 +47,7 @@ export function ProductsSection() {
             />
             <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-2">
               {combos.map((combo) => (
-                <article
-                  className="sweet-card tap-soft overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-3xl"
-                  key={combo.id}
-                >
-                  {combo.image ? (
-                    <Image
-                      src={assetPath(combo.image.src)}
-                      alt={combo.image.alt}
-                      width={720}
-                      height={520}
-                      className="aspect-[4/2.7] w-full object-cover sm:aspect-[4/3]"
-                    />
-                  ) : null}
-                  <div className="p-4 sm:p-5">
-                    <h3 className="font-display text-xl font-black sm:text-2xl">
-                      {combo.name}
-                    </h3>
-                    <p className="mt-2 text-sm leading-6 text-[var(--color-muted)] sm:text-base sm:leading-7">
-                      {combo.description}
-                    </p>
-                    {combo.price ? (
-                      <p className="mt-4 font-black text-[var(--color-primary)]">
-                        {combo.price}
-                      </p>
-                    ) : null}
-                  </div>
-                </article>
+                <ComboCard combo={combo} key={combo.id} />
               ))}
             </div>
           </div>

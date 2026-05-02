@@ -13,7 +13,7 @@ export function SiteHeader() {
 
   return (
     <header className="sticky top-2 z-40 px-3 sm:top-3 sm:px-6 lg:px-8">
-      <div className="mx-auto max-w-7xl">
+      <div className="mx-auto flex max-w-7xl justify-center">
         <div className="group/header relative w-fit max-w-full">
           <div className="mavis-header-minimal inline-flex max-w-[calc(100vw-1.5rem)] items-center gap-2 rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/82 px-2 py-2 shadow-[0_18px_60px_-44px_rgba(53,17,20,0.62)] backdrop-blur-2xl">
             <a
@@ -55,10 +55,10 @@ export function SiteHeader() {
           <nav
             aria-label="Menu principal"
             className={cn(
-              "absolute left-0 top-[calc(100%+0.5rem)] w-[min(calc(100vw-1.5rem),22rem)] rounded-[1.35rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-2 shadow-[0_24px_70px_-42px_rgba(53,17,20,0.62)] backdrop-blur-2xl transition duration-200",
+              "absolute left-1/2 top-[calc(100%+0.5rem)] w-[min(calc(100vw-1.5rem),22rem)] rounded-[1.35rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-2 shadow-[0_24px_70px_-42px_rgba(53,17,20,0.62)] backdrop-blur-2xl transition duration-200",
               isMenuOpen
-                ? "pointer-events-auto translate-y-0 opacity-100"
-                : "pointer-events-none -translate-y-2 opacity-0 md:group-focus-within/header:pointer-events-auto md:group-focus-within/header:translate-y-0 md:group-focus-within/header:opacity-100 md:group-hover/header:pointer-events-auto md:group-hover/header:translate-y-0 md:group-hover/header:opacity-100"
+                ? "pointer-events-auto -translate-x-1/2 translate-y-0 opacity-100"
+                : "pointer-events-none -translate-x-1/2 -translate-y-2 opacity-0 md:group-focus-within/header:pointer-events-auto md:group-focus-within/header:translate-y-0 md:group-focus-within/header:opacity-100 md:group-hover/header:pointer-events-auto md:group-hover/header:translate-y-0 md:group-hover/header:opacity-100"
             )}
           >
             <div className="grid gap-1">
