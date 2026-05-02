@@ -6,7 +6,7 @@ import { SectionHeading } from "./SectionHeading";
 
 export function AboutSection() {
   return (
-    <section className="mavis-pattern-soft px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="sobre">
+    <section className="px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="sobre">
       <div className="mx-auto grid max-w-7xl gap-7 sm:gap-10 lg:grid-cols-[0.85fr_1fr] lg:items-center">
         <div className="relative">
           <div className="absolute -inset-4 rounded-[2.5rem] bg-[var(--color-accent-soft)]/45" />

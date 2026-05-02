@@ -9,7 +9,7 @@ const orderHref = createWhatsAppLink(
 
 export function FinalCta() {
   return (
-    <section className="mavis-pattern-soft px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="contato">
+    <section className="px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="contato">
       <div className="mx-auto max-w-5xl overflow-hidden rounded-[1.75rem] bg-[var(--color-text)] p-5 text-[var(--color-primary-foreground)] shadow-brand sm:rounded-[2.5rem] sm:p-12">
         <p className="text-xs font-black uppercase tracking-[0.25em] text-white/60">
           Cookies da Mavis

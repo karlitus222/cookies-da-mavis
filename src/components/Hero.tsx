@@ -15,31 +15,39 @@ export function Hero() {
 
   return (
     <section
-      className="mavis-pattern-soft relative isolate overflow-hidden px-4 py-9 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
+      className="mavis-pattern-soft relative isolate overflow-hidden px-4 py-7 sm:px-6 sm:py-16 lg:px-8 lg:py-24"
       id="inicio"
     >
-      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_34%),linear-gradient(135deg,var(--color-background),var(--color-surface))]" />
+      <div className="absolute inset-0 -z-10 bg-[radial-gradient(circle_at_top_left,var(--color-accent-soft),transparent_30%),linear-gradient(135deg,transparent,rgba(255,255,255,0.42))]" />
       <div className="absolute right-0 top-24 -z-10 h-72 w-72 rounded-full bg-[var(--color-accent)]/10 blur-3xl" />
 
       <div className="mx-auto grid max-w-7xl items-center gap-7 lg:grid-cols-[1fr_0.9fr] lg:gap-10">
         <div className="animate-rise-in">
           <EditingHint>conteudo aguardando materiais reais</EditingHint>
-          <h1 className="mt-3 max-w-4xl font-display text-[2.35rem] font-black leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
-            <span className="hero-word">Amor</span>,{" "}
-            <span className="hero-word">cookies</span> e{" "}
-            <span className="hero-word">miados</span> em cada mordida
+          <h1 className="mt-3 max-w-4xl font-display text-[2.15rem] font-black leading-[1.02] text-[var(--color-text)] sm:mt-5 sm:text-5xl lg:text-7xl">
+            <span className="sm:hidden">
+              <span className="hero-word">Cookies</span> artesanais da Mavis
+            </span>
+            <span className="hidden sm:inline">
+              <span className="hero-word">Amor</span>,{" "}
+              <span className="hero-word">cookies</span> e{" "}
+              <span className="hero-word">miados</span> em cada mordida
+            </span>
           </h1>
-          <p className="mt-4 max-w-2xl text-base leading-7 text-[var(--color-muted)] sm:mt-6 sm:text-xl sm:leading-9">
-            {brandInfo.heroSubtitle}
+          <p className="mt-3 max-w-2xl text-[0.95rem] leading-6 text-[var(--color-muted)] sm:mt-6 sm:text-xl sm:leading-9">
+            <span className="sm:hidden">
+              Recheados, fofinhos e prontos para adoçar Teresina e Timon.
+            </span>
+            <span className="hidden sm:inline">{brandInfo.heroSubtitle}</span>
           </p>
-          <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:gap-3">
+          <div className="mt-4 grid grid-cols-2 gap-2.5 sm:mt-8 sm:flex sm:flex-row sm:gap-3">
             <ButtonLink href="#sabores" variant="secondary">
               Ver sabores
             </ButtonLink>
             <ButtonLink href={orderHref}>Fazer pedido</ButtonLink>
           </div>
 
-          <dl className="mt-6 grid max-w-2xl gap-2 sm:mt-10 sm:grid-cols-3 sm:gap-3">
+          <dl className="mt-6 hidden max-w-2xl gap-2 sm:mt-10 sm:grid sm:grid-cols-3 sm:gap-3">
             <div className="tap-soft rounded-2xl border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/86 p-3 shadow-sm sm:rounded-3xl sm:p-4">
               <dt className="text-[0.65rem] font-black uppercase tracking-[0.18em] text-[var(--color-accent)] sm:text-xs">
                 Atendimento
