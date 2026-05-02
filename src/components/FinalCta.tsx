@@ -1,16 +1,10 @@
 import { brandInfo } from "@/data/site";
-import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { ButtonLink } from "./ButtonLink";
-
-const orderHref = createWhatsAppLink(
-  brandInfo.whatsappNumber,
-  createOrderMessage({ brandName: brandInfo.name })
-);
 
 export function FinalCta() {
   return (
     <section className="scroll-reveal px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24" id="contato">
-      <div className="mx-auto max-w-5xl overflow-hidden rounded-[1.75rem] bg-[var(--color-text)] p-5 text-[var(--color-primary-foreground)] shadow-brand sm:rounded-[2.5rem] sm:p-12">
+      <div className="sweet-final-cta mx-auto max-w-5xl overflow-hidden rounded-[1.75rem] bg-[var(--color-text)] p-5 text-[var(--color-primary-foreground)] shadow-brand sm:rounded-[2.5rem] sm:p-12">
         <p className="text-xs font-black uppercase tracking-[0.25em] text-white/60">
           Cookies da Mavis
         </p>
@@ -23,9 +17,9 @@ export function FinalCta() {
         <div className="mt-5 flex flex-col gap-2.5 sm:mt-8 sm:flex-row sm:gap-3">
           <ButtonLink
             className="bg-[var(--color-primary-foreground)] text-[var(--color-text)]"
-            href={orderHref}
+            href="#sabores"
           >
-            Pedir pelo WhatsApp
+            Montar pedido no carrinho
           </ButtonLink>
           {brandInfo.instagramUrl ? (
             <ButtonLink

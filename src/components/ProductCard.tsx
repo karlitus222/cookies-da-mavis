@@ -3,11 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Product } from "@/data/site";
-import { brandInfo } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
-import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
-import { ButtonLink } from "./ButtonLink";
+import { useCart } from "./CartProvider";
 
 type ProductCardProps = {
   product: Product;
@@ -15,17 +13,11 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const href = createWhatsAppLink(
-    brandInfo.whatsappNumber,
-    createOrderMessage({
-      brandName: brandInfo.name,
-      productName: product.name
-    })
-  );
+  const { addItem } = useCart();
   const descriptionId = `${product.id}-description`;
 
   return (
-    <article className="tap-soft group overflow-hidden rounded-[1.25rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
+    <article className="sweet-card tap-soft group overflow-hidden rounded-[1.25rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem]">
       <div className="relative overflow-hidden">
         <Image
           src={assetPath(product.image.src)}
@@ -70,9 +62,13 @@ export function ProductCard({ product }: ProductCardProps) {
         >
           {isExpanded ? "Mostrar menos" : "Ler mais"}
         </button>
-        <ButtonLink className="mt-3 w-full px-3 py-2 text-[0.72rem] sm:mt-5 sm:px-5 sm:py-3 sm:text-sm" href={href}>
-          Quero esse
-        </ButtonLink>
+        <button
+          className="tap-soft mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-2 text-[0.72rem] font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-0.5 sm:mt-5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+          onClick={() => addItem(product)}
+          type="button"
+        >
+          Adicionar
+        </button>
       </div>
     </article>
   );

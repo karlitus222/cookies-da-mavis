@@ -3,11 +3,9 @@
 import Image from "next/image";
 import { useState } from "react";
 import type { Product } from "@/data/site";
-import { brandInfo } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
-import { createOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
-import { ButtonLink } from "./ButtonLink";
+import { useCart } from "./CartProvider";
 
 type FlavorShowcaseProps = {
   products: Product[];
@@ -17,25 +15,19 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
   const initialProduct = products.find((product) => product.featured) ?? products[0];
   const [selectedId, setSelectedId] = useState(initialProduct?.id ?? "");
   const [animationTick, setAnimationTick] = useState(0);
+  const { addItem } = useCart();
   if (!initialProduct) {
     return null;
   }
   const selectedProduct =
     products.find((product) => product.id === selectedId) ?? initialProduct;
-  const orderHref = createWhatsAppLink(
-    brandInfo.whatsappNumber,
-    createOrderMessage({
-      brandName: brandInfo.name,
-      productName: selectedProduct.name
-    })
-  );
   const handleSelect = (productId: string) => {
     setSelectedId(productId);
     setAnimationTick((current) => current + 1);
   };
 
   return (
-    <div className="scroll-reveal mt-7 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
+    <div className="sweet-panel scroll-reveal mt-7 overflow-hidden rounded-[1.75rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 p-3 shadow-sm sm:mt-10 sm:rounded-[2.5rem] sm:p-5 lg:grid lg:grid-cols-[0.9fr_1fr] lg:gap-6 lg:p-6">
       <div
         className="animate-flavor-swap relative overflow-hidden rounded-[1.35rem] bg-[var(--color-accent-soft)]/45 sm:rounded-[2rem]"
         key={`image-${selectedProduct.id}-${animationTick}`}
@@ -75,9 +67,13 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
               {selectedProduct.price}
             </span>
           ) : null}
-          <ButtonLink className="px-4 py-2 text-xs sm:px-5 sm:py-3 sm:text-sm" href={orderHref}>
-            Quero esse sabor
-          </ButtonLink>
+          <button
+            className="tap-soft inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-xs font-black text-[var(--color-primary-foreground)] shadow-brand transition hover:-translate-y-0.5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+            onClick={() => addItem(selectedProduct)}
+            type="button"
+          >
+            Adicionar ao carrinho
+          </button>
         </div>
 
         <div className="mobile-pill-scroll mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:gap-3 sm:overflow-visible sm:pb-0">
@@ -93,7 +89,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
                     ? "animate-selected-flavor border-[var(--color-primary)] shadow-brand ring-2 ring-[var(--color-accent)]/30"
                     : "border-[var(--color-primary)]/10"
                 )}
-                key={product.id}
+                key={`${product.id}-${isSelected ? animationTick : "idle"}`}
                 onClick={() => handleSelect(product.id)}
                 type="button"
               >

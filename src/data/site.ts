@@ -248,7 +248,8 @@ export const orderSteps = [
   },
   {
     title: "Chame no WhatsApp",
-    description: "O botao ja abre uma mensagem pronta com o sabor escolhido."
+    description:
+      "O carrinho monta a mensagem com sabores e quantidades para enviar no WhatsApp."
   },
   {
     title: "Confirme o pedido",

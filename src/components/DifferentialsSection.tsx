@@ -19,7 +19,7 @@ export function DifferentialsSection() {
           <div className="grid gap-3 sm:grid-cols-2 sm:gap-4">
             {differentials.map((item, index) => (
               <article
-                className="tap-soft rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-4 shadow-sm sm:rounded-[2rem] sm:p-6"
+                className="sweet-card tap-soft rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)]/94 p-4 shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-[2rem] sm:p-6"
                 key={`${item.title}-${index}`}
               >
                 <span className="flex h-8 w-8 items-center justify-center rounded-xl bg-[var(--color-accent-soft)] text-xs font-black text-[var(--color-primary)] sm:h-10 sm:w-10 sm:rounded-2xl sm:text-sm">

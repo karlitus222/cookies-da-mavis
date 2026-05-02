@@ -1,9 +1,10 @@
 import type { CSSProperties } from "react";
 import { AboutSection } from "@/components/AboutSection";
+import { CartDrawer } from "@/components/CartDrawer";
+import { CartProvider } from "@/components/CartProvider";
 import { DifferentialsSection } from "@/components/DifferentialsSection";
 import { FaqSection } from "@/components/FaqSection";
 import { FinalCta } from "@/components/FinalCta";
-import { FloatingWhatsApp } from "@/components/FloatingWhatsApp";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowToOrderSection } from "@/components/HowToOrderSection";
@@ -26,18 +27,20 @@ const themeStyle = {
 
 export default function Home() {
   return (
-    <main className="mavis-page" style={themeStyle}>
-      <SiteHeader />
-      <Hero />
-      <AboutSection />
-      <ProductsSection />
-      <DifferentialsSection />
-      <HowToOrderSection />
-      <TestimonialsSection />
-      <FaqSection />
-      <FinalCta />
-      <Footer />
-      <FloatingWhatsApp />
-    </main>
+    <CartProvider>
+      <main className="mavis-page" style={themeStyle}>
+        <SiteHeader />
+        <Hero />
+        <AboutSection />
+        <ProductsSection />
+        <DifferentialsSection />
+        <HowToOrderSection />
+        <TestimonialsSection />
+        <FaqSection />
+        <FinalCta />
+        <Footer />
+        <CartDrawer />
+      </main>
+    </CartProvider>
   );
 }

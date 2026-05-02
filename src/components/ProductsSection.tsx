@@ -40,7 +40,7 @@ export function ProductsSection() {
         </div>
 
         {combos.length > 0 ? (
-          <div className="mt-10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/92 p-4 shadow-sm sm:mt-16 sm:rounded-[2rem] sm:p-8">
+          <div className="sweet-panel mt-10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/92 p-4 shadow-sm sm:mt-16 sm:rounded-[2rem] sm:p-8">
             <SectionHeading
               eyebrow="Especiais"
               title="Para eventos, presentes e lembrancinhas"
@@ -49,7 +49,7 @@ export function ProductsSection() {
             <div className="mt-6 grid gap-4 sm:mt-8 md:grid-cols-2">
               {combos.map((combo) => (
                 <article
-                  className="tap-soft overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm sm:rounded-3xl"
+                  className="sweet-card tap-soft overflow-hidden rounded-2xl bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1 hover:shadow-brand sm:rounded-3xl"
                   key={combo.id}
                 >
                   {combo.image ? (

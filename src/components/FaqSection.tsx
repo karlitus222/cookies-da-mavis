@@ -14,7 +14,7 @@ export function FaqSection() {
           description="Se ainda ficar alguma dúvida, é só chamar no WhatsApp."
         />
 
-        <div className="mt-7 divide-y divide-[var(--color-primary)]/10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 shadow-sm sm:mt-10 sm:rounded-[2rem]">
+        <div className="sweet-panel mt-7 divide-y divide-[var(--color-primary)]/10 rounded-[1.5rem] border border-[var(--color-primary)]/10 bg-[var(--color-background)]/94 shadow-sm sm:mt-10 sm:rounded-[2rem]">
           {faq.map((item) => (
             <details className="tap-soft group p-4 sm:p-6" key={item.question}>
               <summary className="flex cursor-pointer list-none items-center justify-between gap-3 font-display text-lg font-black sm:gap-4 sm:text-xl">
