@@ -8,6 +8,7 @@ import { FinalCta } from "@/components/FinalCta";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
 import { HowToOrderSection } from "@/components/HowToOrderSection";
+import { MothersDayHighlight } from "@/components/MothersDayHighlight";
 import { ProductsSection } from "@/components/ProductsSection";
 import { SiteHeader } from "@/components/SiteHeader";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
@@ -31,6 +32,7 @@ export default function Home() {
       <main className="mavis-page" style={themeStyle}>
         <SiteHeader />
         <Hero />
+        <MothersDayHighlight />
         <AboutSection />
         <ProductsSection />
         <DifferentialsSection />

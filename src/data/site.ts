@@ -22,6 +22,23 @@ export type Combo = {
   image?: ImageInfo;
 };
 
+export type CampaignHighlight = {
+  id: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  price: string;
+  validUntilLabel: string;
+  validUntilISO: string;
+  productName: string;
+  cartName: string;
+  ctaLabel: string;
+  secondaryCtaLabel: string;
+  whatsappMessage: string;
+  images: ImageInfo[];
+  notes: string[];
+};
+
 export type Testimonial = {
   id: string;
   name: string;
@@ -217,6 +234,38 @@ export const combos: Combo[] = [
     }
   }
 ];
+
+export const mothersDayHighlight: CampaignHighlight = {
+  id: "kit-afeto-dia-das-maes",
+  eyebrow: "Destaque Dia das Mães",
+  title: "Kit Afeto para presentear sua mãe",
+  description:
+    "Até 10/05, garanta um presente doce e cheio de carinho: o Kit Afeto vem com Cookitos e um copo especial de Dia das Mães. Você escolhe o sabor dos Cookitos e a arte do copo para deixar o presente com a cara da sua mãe.",
+  price: "R$ 48,00",
+  validUntilLabel: "Válido até 10/05",
+  validUntilISO: "2026-05-10T23:59:59-03:00",
+  productName: "Kit Afeto",
+  cartName: "Kit Afeto: Cookitos + copo especial de Dia das Mães",
+  ctaLabel: "Quero presentear minha mãe",
+  secondaryCtaLabel: "Adicionar ao carrinho",
+  whatsappMessage:
+    "Olá! Vim pela landing page da Cookies da Mavis e quero garantir o Kit Afeto de Dia das Mães por R$ 48,00. Quero escolher o sabor dos Cookitos e a arte do copo para presentear minha mãe. Pode me passar as opções disponíveis?",
+  images: [
+    {
+      src: "/images/brand/dia-das-maes-kit-afeto-fullhd.jpeg",
+      alt: "Kit Afeto de Dia das Mães com Cookitos e copo especial da Cookies da Mavis"
+    },
+    {
+      src: "/images/brand/dia-das-maes-copos-fullhd.jpeg",
+      alt: "Copos especiais de Dia das Mães da Cookies da Mavis"
+    }
+  ],
+  notes: [
+    "R$ 48,00",
+    "Escolha a arte do copo",
+    "Escolha o sabor dos Cookitos"
+  ]
+};
 
 export const differentials = [
   {
