@@ -89,14 +89,14 @@ export function MothersDayHighlight() {
               </p>
             </div>
 
-            <div className="order-1 grid gap-3 sm:grid-cols-[0.88fr_1.12fr] lg:order-2">
+            <div className="order-1 grid items-start gap-3 sm:grid-cols-2 lg:order-2">
               <div className="group relative overflow-hidden rounded-[1.6rem] border border-white/80 bg-white/52 shadow-sm sm:rounded-[2rem]">
                 <Image
                   src={assetPath(mothersDayHighlight.images[0].src)}
                   alt={mothersDayHighlight.images[0].alt}
                   width={1080}
                   height={1920}
-                  className="aspect-[4/4.65] w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+                  className="aspect-[9/16] w-full object-cover transition duration-700 group-hover:scale-[1.025]"
                   priority
                 />
               </div>
@@ -106,7 +106,7 @@ export function MothersDayHighlight() {
                   alt={mothersDayHighlight.images[1].alt}
                   width={1080}
                   height={1920}
-                  className="aspect-[4/3.25] w-full object-cover transition duration-700 group-hover:scale-[1.035] sm:h-full sm:aspect-auto"
+                  className="aspect-[9/16] w-full object-cover transition duration-700 group-hover:scale-[1.025]"
                 />
               </div>
             </div>
