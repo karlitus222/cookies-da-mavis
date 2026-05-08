@@ -8,6 +8,7 @@ import { cn } from "@/lib/cn";
 import { getProductCategoryMeta } from "@/lib/productCategory";
 import { getStockLabel, isOutOfStock } from "@/lib/stock";
 import { useCart } from "./CartProvider";
+import { useStockValue } from "./StockProvider";
 
 type ProductCardProps = {
   product: Product;
@@ -18,8 +19,9 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const descriptionId = `${product.id}-description`;
   const categoryMeta = getProductCategoryMeta(product.category);
-  const stockLabel = getStockLabel(product.stock);
-  const productIsOutOfStock = isOutOfStock(product.stock);
+  const effectiveStock = useStockValue(product.id, product.stock);
+  const stockLabel = getStockLabel(effectiveStock);
+  const productIsOutOfStock = isOutOfStock(effectiveStock);
 
   return (
     <article className="sweet-card tap-soft group overflow-hidden rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem]">
@@ -102,7 +104,7 @@ export function ProductCard({ product }: ProductCardProps) {
               : "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
           )}
           disabled={productIsOutOfStock}
-          onClick={() => addItem(product)}
+          onClick={() => addItem({ ...product, stock: effectiveStock })}
           type="button"
         >
           {productIsOutOfStock ? "Indisponivel" : "Adicionar"}

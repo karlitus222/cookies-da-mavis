@@ -7,6 +7,7 @@ import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
 import { getStockLabel, isOutOfStock } from "@/lib/stock";
 import { useCart } from "./CartProvider";
+import { resolveStockValue, useStockMap } from "./StockProvider";
 
 type FlavorShowcaseProps = {
   products: Product[];
@@ -17,13 +18,19 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
   const [selectedId, setSelectedId] = useState(initialProduct?.id ?? "");
   const [animationTick, setAnimationTick] = useState(0);
   const { addItem } = useCart();
+  const stockById = useStockMap();
   if (!initialProduct) {
     return null;
   }
   const selectedProduct =
     products.find((product) => product.id === selectedId) ?? initialProduct;
-  const selectedStockLabel = getStockLabel(selectedProduct.stock);
-  const selectedIsOutOfStock = isOutOfStock(selectedProduct.stock);
+  const selectedStock = resolveStockValue(
+    stockById,
+    selectedProduct.id,
+    selectedProduct.stock
+  );
+  const selectedStockLabel = getStockLabel(selectedStock);
+  const selectedIsOutOfStock = isOutOfStock(selectedStock);
   const handleSelect = (productId: string) => {
     setSelectedId(productId);
     setAnimationTick((current) => current + 1);
@@ -97,7 +104,7 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
                 : "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
             )}
             disabled={selectedIsOutOfStock}
-            onClick={() => addItem(selectedProduct)}
+            onClick={() => addItem({ ...selectedProduct, stock: selectedStock })}
             type="button"
           >
             {selectedIsOutOfStock ? "Indisponivel" : "Adicionar ao carrinho"}
@@ -107,7 +114,12 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
         <div className="mobile-pill-scroll mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:gap-3 sm:overflow-visible sm:pb-0">
           {products.map((product) => {
             const isSelected = product.id === selectedProduct.id;
-            const productIsOutOfStock = isOutOfStock(product.stock);
+            const productStock = resolveStockValue(
+              stockById,
+              product.id,
+              product.stock
+            );
+            const productIsOutOfStock = isOutOfStock(productStock);
 
             return (
               <button

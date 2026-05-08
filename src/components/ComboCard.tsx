@@ -6,6 +6,7 @@ import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
 import { getStockLabel, isOutOfStock } from "@/lib/stock";
 import { useCart } from "./CartProvider";
+import { useStockValue } from "./StockProvider";
 
 type ComboCardProps = {
   combo: Combo;
@@ -13,8 +14,9 @@ type ComboCardProps = {
 
 export function ComboCard({ combo }: ComboCardProps) {
   const { addItem } = useCart();
-  const stockLabel = getStockLabel(combo.stock);
-  const comboIsOutOfStock = isOutOfStock(combo.stock);
+  const effectiveStock = useStockValue(combo.id, combo.stock);
+  const stockLabel = getStockLabel(effectiveStock);
+  const comboIsOutOfStock = isOutOfStock(effectiveStock);
 
   return (
     <article className="sweet-card tap-soft overflow-hidden rounded-[1.7rem] bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-3xl">
@@ -81,7 +83,7 @@ export function ComboCard({ combo }: ComboCardProps) {
                 id: combo.id,
                 name: combo.name,
                 price: combo.price,
-                stock: combo.stock
+                stock: effectiveStock
               })
             }
             type="button"

@@ -11,6 +11,7 @@ import { HowToOrderSection } from "@/components/HowToOrderSection";
 import { MothersDayHighlight } from "@/components/MothersDayHighlight";
 import { ProductsSection } from "@/components/ProductsSection";
 import { SiteHeader } from "@/components/SiteHeader";
+import { StockProvider } from "@/components/StockProvider";
 import { TestimonialsSection } from "@/components/TestimonialsSection";
 import { brandInfo } from "@/data/site";
 
@@ -28,21 +29,23 @@ const themeStyle = {
 
 export default function Home() {
   return (
-    <CartProvider>
-      <main className="mavis-page" style={themeStyle}>
-        <SiteHeader />
-        <Hero />
-        <MothersDayHighlight />
-        <AboutSection />
-        <ProductsSection />
-        <DifferentialsSection />
-        <HowToOrderSection />
-        <TestimonialsSection />
-        <FaqSection />
-        <FinalCta />
-        <Footer />
-        <CartDrawer />
-      </main>
-    </CartProvider>
+    <StockProvider>
+      <CartProvider>
+        <main className="mavis-page" style={themeStyle}>
+          <SiteHeader />
+          <Hero />
+          <MothersDayHighlight />
+          <AboutSection />
+          <ProductsSection />
+          <DifferentialsSection />
+          <HowToOrderSection />
+          <TestimonialsSection />
+          <FaqSection />
+          <FinalCta />
+          <Footer />
+          <CartDrawer />
+        </main>
+      </CartProvider>
+    </StockProvider>
   );
 }
