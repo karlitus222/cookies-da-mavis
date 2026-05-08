@@ -10,6 +10,10 @@ type CartOrderMessageInput = {
     price?: string;
     quantity: number;
   }>;
+  fulfillment?: {
+    address?: string;
+    method: "delivery" | "pickup";
+  };
   total?: string | null;
 };
 
@@ -27,6 +31,7 @@ export function createOrderMessage({ brandName, productName }: OrderMessageInput
 
 export function createCartOrderMessage({
   brandName,
+  fulfillment,
   items,
   total
 }: CartOrderMessageInput) {
@@ -42,8 +47,19 @@ export function createCartOrderMessage({
     })
     .join("\n");
   const totalLine = total ? `\nTotal aproximado: ${total}.` : "";
+  const fulfillmentLine = fulfillment
+    ? fulfillment.method === "delivery"
+      ? `\nForma de recebimento: Entrega.\nEndereco: ${fulfillment.address?.trim() || "a informar"}.`
+      : "\nForma de recebimento: Retirada."
+    : "";
+  const confirmationLine =
+    fulfillment?.method === "pickup"
+      ? "Pode confirmar disponibilidade, horario de retirada e forma de pagamento?"
+      : fulfillment?.method === "delivery"
+        ? "Pode confirmar disponibilidade, taxa de entrega e forma de pagamento?"
+        : "Pode confirmar disponibilidade, taxa de entrega e forma de pagamento?";
 
-  return `Ola! Vim pela landing page da ${brandName} e quero fazer esse pedido:\n${productLines}${totalLine}\nPode confirmar disponibilidade, taxa de entrega e forma de pagamento?`;
+  return `Ola! Vim pela landing page da ${brandName} e quero fazer esse pedido:\n${productLines}${totalLine}${fulfillmentLine}\n${confirmationLine}`;
 }
 
 export function createWhatsAppLink(phone: string, message: string) {

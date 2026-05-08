@@ -9,6 +9,10 @@ import { useCart } from "./CartProvider";
 
 export function CartDrawer() {
   const { clear, decrement, increment, items, removeItem, totalItems } = useCart();
+  const [address, setAddress] = useState("");
+  const [fulfillmentMethod, setFulfillmentMethod] = useState<
+    "delivery" | "pickup"
+  >("delivery");
   const [isOpen, setIsOpen] = useState(false);
 
   const total = useMemo(() => {
@@ -26,10 +30,16 @@ export function CartDrawer() {
   }, [items]);
 
   const formattedTotal = total === null ? null : formatBrazilianCurrency(total);
+  const needsAddress = fulfillmentMethod === "delivery";
+  const canCheckout = totalItems > 0 && (!needsAddress || address.trim().length > 0);
   const orderHref = createWhatsAppLink(
     brandInfo.whatsappNumber,
     createCartOrderMessage({
       brandName: brandInfo.name,
+      fulfillment: {
+        address,
+        method: fulfillmentMethod
+      },
       items,
       total: formattedTotal
     })
@@ -50,7 +60,7 @@ export function CartDrawer() {
       <aside
         aria-label="Carrinho de pedido"
         className={cn(
-          "fixed bottom-3 left-3 right-3 z-[70] max-h-[82vh] overflow-hidden rounded-[2rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] p-4 shadow-[0_28px_90px_-36px_rgba(53,17,20,0.55)] transition duration-300 sm:bottom-5 sm:left-auto sm:right-5 sm:w-[27rem] sm:p-5",
+          "fixed bottom-3 left-3 right-3 z-[70] max-h-[88vh] overflow-y-auto rounded-[2rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] p-4 shadow-[0_28px_90px_-36px_rgba(53,17,20,0.55)] transition duration-300 sm:bottom-5 sm:left-auto sm:right-5 sm:w-[27rem] sm:p-5",
           isOpen
             ? "translate-y-0 opacity-100"
             : "pointer-events-none translate-y-8 opacity-0"
@@ -76,7 +86,7 @@ export function CartDrawer() {
           </button>
         </div>
 
-        <div className="mt-4 max-h-[42vh] overflow-y-auto pr-1">
+        <div className="mt-4 max-h-[36vh] overflow-y-auto pr-1">
           {hasItems ? (
             <div className="grid gap-3">
               {items.map((item) => (
@@ -145,6 +155,59 @@ export function CartDrawer() {
           )}
         </div>
 
+        {hasItems ? (
+          <div className="mt-4 rounded-[1.4rem] border border-[var(--color-primary)]/10 bg-white/70 p-3 shadow-sm">
+            <p className="text-sm font-black text-[var(--color-text)]">
+              Como voce quer receber?
+            </p>
+            <div className="mt-3 grid grid-cols-2 gap-2">
+              {[
+                { label: "Entrega", value: "delivery" },
+                { label: "Retirada", value: "pickup" }
+              ].map((option) => {
+                const isSelected = fulfillmentMethod === option.value;
+
+                return (
+                  <button
+                    aria-pressed={isSelected}
+                    className={cn(
+                      "tap-soft rounded-full border px-3 py-2 text-sm font-black transition",
+                      isSelected
+                        ? "border-[var(--color-primary)] bg-[var(--color-primary)] text-[var(--color-primary-foreground)] shadow-sm"
+                        : "border-[var(--color-primary)]/15 bg-[var(--color-background)] text-[var(--color-muted)]"
+                    )}
+                    key={option.value}
+                    onClick={() =>
+                      setFulfillmentMethod(option.value as "delivery" | "pickup")
+                    }
+                    type="button"
+                  >
+                    {option.label}
+                  </button>
+                );
+              })}
+            </div>
+
+            {needsAddress ? (
+              <label className="mt-3 block">
+                <span className="text-xs font-black uppercase tracking-[0.14em] text-[var(--color-accent)]">
+                  Endereco de entrega
+                </span>
+                <textarea
+                  className="mt-2 min-h-20 w-full resize-none rounded-2xl border border-[var(--color-primary)]/15 bg-[var(--color-background)] px-3 py-2 text-sm font-bold leading-6 text-[var(--color-text)] outline-none transition placeholder:text-[var(--color-muted)]/70 focus:border-[var(--color-primary)] focus:bg-white"
+                  onChange={(event) => setAddress(event.target.value)}
+                  placeholder="Rua, numero, bairro, complemento e ponto de referencia"
+                  value={address}
+                />
+              </label>
+            ) : (
+              <p className="mt-3 rounded-2xl bg-[var(--color-background)] px-3 py-2 text-xs font-bold leading-5 text-[var(--color-muted)]">
+                A retirada sera combinada no WhatsApp com horario e disponibilidade.
+              </p>
+            )}
+          </div>
+        ) : null}
+
         <div className="mt-4 rounded-[1.4rem] bg-[var(--color-background)]/90 p-3">
           <div className="flex items-center justify-between gap-3">
             <span className="text-sm font-bold text-[var(--color-muted)]">
@@ -155,25 +218,30 @@ export function CartDrawer() {
             </strong>
           </div>
           <p className="mt-1 text-xs leading-5 text-[var(--color-muted)]">
-            Taxa de entrega, disponibilidade e forma de pagamento sao
-            combinadas no WhatsApp.
+            {needsAddress
+              ? "Taxa de entrega, disponibilidade e forma de pagamento sao combinadas no WhatsApp."
+              : "Horario de retirada, disponibilidade e forma de pagamento sao combinados no WhatsApp."}
           </p>
         </div>
 
         <div className="mt-4 grid gap-2">
           <a
-            aria-disabled={!hasItems}
+            aria-disabled={!canCheckout}
             className={cn(
               "tap-soft inline-flex min-h-12 items-center justify-center rounded-full px-5 py-3 text-center text-sm font-black transition",
-              hasItems
+              canCheckout
                 ? "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
                 : "pointer-events-none bg-[var(--color-primary)]/25 text-[var(--color-muted)]"
             )}
-            href={hasItems ? orderHref : "#sabores"}
-            rel={hasItems ? "noreferrer" : undefined}
-            target={hasItems ? "_blank" : undefined}
+            href={canCheckout ? orderHref : "#sabores"}
+            rel={canCheckout ? "noreferrer" : undefined}
+            target={canCheckout ? "_blank" : undefined}
           >
-            Fechar pedido no WhatsApp
+            {!hasItems
+              ? "Adicione itens para continuar"
+              : needsAddress && !address.trim()
+                ? "Informe o endereco para continuar"
+                : "Fechar pedido no WhatsApp"}
           </a>
           {hasItems ? (
             <button
