@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import type { CSSProperties } from "react";
-import { StockAdminPanel } from "@/components/StockAdminPanel";
-import { brandInfo } from "@/data/site";
+import { PainelEstoque } from "@/componentes/PainelEstoque";
+import { brandInfo } from "@/dados/conteudo-site";
 
 const themeStyle = {
   "--color-background": brandInfo.palette.background,
@@ -29,7 +29,7 @@ export default function AdminPage() {
       className="mavis-page min-h-screen bg-[var(--color-background)] px-4 py-8 sm:px-6 sm:py-12 lg:px-8"
       style={themeStyle}
     >
-      <StockAdminPanel />
+      <PainelEstoque />
     </main>
   );
 }

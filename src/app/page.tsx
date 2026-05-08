@@ -1,19 +1,19 @@
 import type { CSSProperties } from "react";
-import { AboutSection } from "@/components/AboutSection";
-import { CartDrawer } from "@/components/CartDrawer";
-import { CartProvider } from "@/components/CartProvider";
-import { DifferentialsSection } from "@/components/DifferentialsSection";
-import { FaqSection } from "@/components/FaqSection";
-import { FinalCta } from "@/components/FinalCta";
-import { Footer } from "@/components/Footer";
-import { Hero } from "@/components/Hero";
-import { HowToOrderSection } from "@/components/HowToOrderSection";
-import { MothersDayHighlight } from "@/components/MothersDayHighlight";
-import { ProductsSection } from "@/components/ProductsSection";
-import { SiteHeader } from "@/components/SiteHeader";
-import { StockProvider } from "@/components/StockProvider";
-import { TestimonialsSection } from "@/components/TestimonialsSection";
-import { brandInfo } from "@/data/site";
+import { SecaoSobre } from "@/componentes/SecaoSobre";
+import { GavetaCarrinho } from "@/componentes/GavetaCarrinho";
+import { ProvedorCarrinho } from "@/componentes/ProvedorCarrinho";
+import { SecaoDiferenciais } from "@/componentes/SecaoDiferenciais";
+import { SecaoFaq } from "@/componentes/SecaoFaq";
+import { ChamadaFinal } from "@/componentes/ChamadaFinal";
+import { Rodape } from "@/componentes/Rodape";
+import { SecaoHero } from "@/componentes/SecaoHero";
+import { SecaoComoPedir } from "@/componentes/SecaoComoPedir";
+import { DestaqueDiaDasMaes } from "@/componentes/DestaqueDiaDasMaes";
+import { SecaoProdutos } from "@/componentes/SecaoProdutos";
+import { CabecalhoSite } from "@/componentes/CabecalhoSite";
+import { ProvedorEstoque } from "@/componentes/ProvedorEstoque";
+import { SecaoDepoimentos } from "@/componentes/SecaoDepoimentos";
+import { brandInfo } from "@/dados/conteudo-site";
 
 const themeStyle = {
   "--color-background": brandInfo.palette.background,
@@ -29,23 +29,23 @@ const themeStyle = {
 
 export default function Home() {
   return (
-    <StockProvider>
-      <CartProvider>
+    <ProvedorEstoque>
+      <ProvedorCarrinho>
         <main className="mavis-page" style={themeStyle}>
-          <SiteHeader />
-          <Hero />
-          <MothersDayHighlight />
-          <AboutSection />
-          <ProductsSection />
-          <DifferentialsSection />
-          <HowToOrderSection />
-          <TestimonialsSection />
-          <FaqSection />
-          <FinalCta />
-          <Footer />
-          <CartDrawer />
+          <CabecalhoSite />
+          <SecaoHero />
+          <DestaqueDiaDasMaes />
+          <SecaoSobre />
+          <SecaoProdutos />
+          <SecaoDiferenciais />
+          <SecaoComoPedir />
+          <SecaoDepoimentos />
+          <SecaoFaq />
+          <ChamadaFinal />
+          <Rodape />
+          <GavetaCarrinho />
         </main>
-      </CartProvider>
-    </StockProvider>
+      </ProvedorCarrinho>
+    </ProvedorEstoque>
   );
 }

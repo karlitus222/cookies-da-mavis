@@ -19,7 +19,7 @@ Site em produção: [cookies-da-mavis.vercel.app](https://cookies-da-mavis.verce
 - `Pedido pelo WhatsApp`: abre `wa.me` com texto pré-preenchido e lista de produtos.
 - `Controle de estoque simples`: mostra estoque quando informado e bloqueia produto com `stock: 0`.
 - `Painel de estoque`: login da cliente em `/admin` para salvar quantidades no Supabase.
-- `Dados centralizados`: textos, contatos, sabores, preços, combos, FAQ e depoimentos ficam em `src/data/site.ts`.
+- `Dados centralizados`: textos, contatos, sabores, preços, combos, FAQ e depoimentos ficam em `src/dados/conteudo-site.ts`.
 - `Cards editáveis`: produtos e especiais são gerados por arrays, sem precisar duplicar HTML.
 - `Identidade visual da marca`: paleta rosa/vermelho, estampa de cookies/gatinhos, fotos reais e logo da Mavis.
 - `Site estático`: `next build` exporta a pasta `out/`, pronta para deploy.
@@ -43,26 +43,28 @@ src/
     globals.css        estilos globais, tema, animações e utilitários visuais
     layout.tsx         fontes, metadata e HTML base
     page.tsx           composição principal da landing page
-  components/
-    CartDrawer.tsx     carrinho flutuante e checkout por WhatsApp
-    CartProvider.tsx   estado global do carrinho
-    ProductCard.tsx    card dos sabores
-    ComboCard.tsx      card dos produtos especiais
-    FlavorShowcase.tsx destaque interativo dos sabores
-    Hero.tsx           primeira dobra da página
-    SiteHeader.tsx     barra superior e menu
-    StockAdminPanel.tsx painel para editar estoque
-    StockProvider.tsx   carrega estoque salvo no Supabase
-  data/
-    site.ts            dados editáveis da marca, produtos, combos e FAQ
-  lib/
-    assetPath.ts       ajuste de caminhos para deploy estático
-    price.ts           parse e formatação de moeda brasileira
-    productCategory.ts metadata visual dos chips de categoria
-    stock.ts           regras de disponibilidade e limite do estoque
-    stockStore.ts      leitura e escrita do estoque no Supabase
-    supabaseClient.ts  cliente Supabase do navegador
-    whatsapp.ts        criação de mensagens e links do WhatsApp
+  componentes/
+    CabecalhoSite.tsx       barra superior e menu
+    SecaoHero.tsx           primeira dobra da página
+    SecaoProdutos.tsx       área de sabores e especiais
+    CartaoProduto.tsx       card dos sabores
+    CartaoCombo.tsx         card dos produtos especiais
+    DestaqueSabores.tsx     destaque interativo dos sabores
+    GavetaCarrinho.tsx      carrinho flutuante e checkout por WhatsApp
+    ProvedorCarrinho.tsx    estado global do carrinho
+    PainelEstoque.tsx       painel para editar estoque
+    ProvedorEstoque.tsx     carrega estoque salvo no Supabase
+  dados/
+    conteudo-site.ts        dados editáveis da marca, produtos, combos e FAQ
+  codigo/
+    caminho-assets.ts       ajuste de caminhos para deploy estático
+    classes-css.ts          junta classes Tailwind de forma segura
+    moeda.ts                parse e formatação de moeda brasileira
+    categorias-produto.ts   metadata visual dos chips de categoria
+    estoque.ts              regras de disponibilidade e limite do estoque
+    banco-estoque.ts        leitura e escrita do estoque no Supabase
+    cliente-supabase.ts     cliente Supabase do navegador
+    mensagens-whatsapp.ts   criação de mensagens e links do WhatsApp
 public/
   images/brand/        logo, fotos, feedbacks e artes reais
 supabase/
@@ -96,7 +98,7 @@ npm run start
 
 ## Onde Editar Textos, Sabores E Contatos
 
-Edite [src/data/site.ts](src/data/site.ts).
+Edite [src/dados/conteudo-site.ts](src/dados/conteudo-site.ts).
 
 - `brandInfo`: nome, WhatsApp, Instagram, região, horário, textos principais, links e paleta.
 - `products`: sabores, descrições, preços, categorias e imagens.
@@ -127,9 +129,9 @@ Exemplo de produto:
 Existem dois jeitos:
 
 1. Pelo painel `/admin`, recomendado para a cliente.
-2. Pelo `src/data/site.ts`, como fallback caso o Supabase ainda nao esteja configurado.
+2. Pelo `src/dados/conteudo-site.ts`, como fallback caso o Supabase ainda nao esteja configurado.
 
-No `src/data/site.ts`, cada produto ou combo pode ter `stock`.
+No `src/dados/conteudo-site.ts`, cada produto ou combo pode ter `stock`.
 
 - `stock: null`: nao mostra estoque no site.
 - `stock: 12`: mostra `12 em estoque` e limita o carrinho a 12 unidades.
@@ -176,7 +178,7 @@ Coloque as imagens em:
 public/images/brand/
 ```
 
-Depois atualize o caminho no `src/data/site.ts`:
+Depois atualize o caminho no `src/dados/conteudo-site.ts`:
 
 ```ts
 image: {
@@ -187,14 +189,12 @@ image: {
 
 ## Como O Carrinho Funciona
 
-O carrinho fica em `CartProvider` e `CartDrawer`.
+O carrinho fica em `src/componentes/ProvedorCarrinho.tsx` e `src/componentes/GavetaCarrinho.tsx`.
 
-- `addItem`: adiciona produto ou aumenta quantidade se ele já existir, respeitando o estoque.
-- `increment`: aumenta a quantidade ate o limite de estoque informado.
-- `decrement`: diminui a quantidade e remove quando chega a zero.
-- `removeItem`: remove um item específico.
-- `clear`: limpa o carrinho.
-- `createCartOrderMessage`: monta a mensagem final para WhatsApp.
+- `ProvedorCarrinho.tsx`: guarda os itens, quantidades e limites de estoque.
+- `GavetaCarrinho.tsx`: mostra o carrinho, entrega/retirada e botão final.
+- `mensagens-whatsapp.ts`: monta a mensagem final para WhatsApp.
+- `moeda.ts`: calcula o total aproximado quando todos os itens têm preço.
 
 Quando todos os itens têm preço, o carrinho mostra total aproximado. Quando algum item depende de orçamento, como mini cookies para evento, o total aparece como `a confirmar`.
 
@@ -233,5 +233,5 @@ Depois faça commit, push e deploy.
 
 - Não use imagens aleatórias de cookies se houver fotos reais da Mavis.
 - Não coloque avaliações fictícias como se fossem reais.
-- Mantenha preços, sabores, WhatsApp e região de atendimento atualizados em `src/data/site.ts`.
+- Mantenha preços, sabores, WhatsApp e região de atendimento atualizados em `src/dados/conteudo-site.ts`.
 - Para mudar a identidade visual, edite primeiro a paleta em `brandInfo.palette` e depois ajuste os estilos globais.

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Baloo_2, Nunito } from "next/font/google";
-import { brandInfo } from "@/data/site";
+import { brandInfo } from "@/dados/conteudo-site";
 import "./globals.css";
 
 const baloo = Baloo_2({

@@ -1,0 +1,42 @@
+import type { AnchorHTMLAttributes, ReactNode } from "react";
+import { juntarClasses } from "@/codigo/classes-css";
+
+type PropriedadesBotaoLink = AnchorHTMLAttributes<HTMLAnchorElement> & {
+  children: ReactNode;
+  variant?: "primary" | "secondary" | "ghost";
+};
+
+const variants = {
+  primary:
+    "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5",
+  secondary:
+    "button-3d-soft border border-[var(--color-primary)]/20 bg-[var(--color-surface)] text-[var(--color-primary)] hover:-translate-y-0.5 hover:border-[var(--color-primary)]",
+  ghost:
+    "text-[var(--color-primary)] underline decoration-[var(--color-accent)]/40 underline-offset-8 hover:decoration-[var(--color-accent)]"
+};
+
+export function BotaoLink({
+  children,
+  className,
+  variant = "primary",
+  href,
+  ...props
+}: PropriedadesBotaoLink) {
+  const isExternal = typeof href === "string" && href.startsWith("http");
+
+  return (
+    <a
+      className={juntarClasses(
+        "tap-soft inline-flex min-h-11 items-center justify-center rounded-full px-5 py-3 text-sm font-bold transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--color-accent)]",
+        variants[variant],
+        className
+      )}
+      href={href}
+      rel={isExternal ? "noreferrer" : props.rel}
+      target={isExternal ? "_blank" : props.target}
+      {...props}
+    >
+      {children}
+    </a>
+  );
+}
