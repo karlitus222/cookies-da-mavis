@@ -9,6 +9,7 @@ export type Product = {
   description: string;
   spotlightDescription?: string;
   price?: string;
+  stock?: number | null;
   image: ImageInfo;
   category?: string;
   featured?: boolean;
@@ -19,6 +20,7 @@ export type Combo = {
   name: string;
   description: string;
   price?: string;
+  stock?: number | null;
   image?: ImageInfo;
 };
 
@@ -124,6 +126,7 @@ export const navItems = [
 ] as const;
 
 export const products: Product[] = [
+  // Estoque: troque null pelo numero real. Ex: stock: 12. Use stock: 0 para marcar indisponivel.
   {
     id: "tradicional",
     name: "Tradicional",
@@ -132,6 +135,7 @@ export const products: Product[] = [
     spotlightDescription:
       "Aquele clássico que não falha: massa amanteigada, gotas de chocolate e textura macia por dentro.",
     price: "R$ 8,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-tradicional-clean.jpeg",
       alt: "Cookie Tradicional da Cookies da Mavis"
@@ -147,6 +151,7 @@ export const products: Product[] = [
     spotlightDescription:
       "O destaque da Mavis: cookie tradicional com recheio de Nutella bem cremoso, perfeito para quem quer uma mordida mais chocolatuda.",
     price: "R$ 12,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-tradicional-nutella-clean.jpeg",
       alt: "Cookie Tradicional com Nutella da Cookies da Mavis"
@@ -162,6 +167,7 @@ export const products: Product[] = [
     spotlightDescription:
       "Red Velvet delicado, com cor linda e gotas de chocolate branco para equilibrar cada mordida.",
     price: "R$ 8,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-red-velvet-clean.jpeg",
       alt: "Cookie Red Velvet da Cookies da Mavis"
@@ -176,6 +182,7 @@ export const products: Product[] = [
     spotlightDescription:
       "Red Velvet macio com recheio de Ninho, uma opção cremosa, suave e bem queridinha.",
     price: "R$ 12,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-red-ninho-clean.jpeg",
       alt: "Cookie Red Ninho da Cookies da Mavis"
@@ -190,6 +197,7 @@ export const products: Product[] = [
     spotlightDescription:
       "Red Velvet com Nutella para quem gosta de recheio mais intenso e aquela combinação de cacau com avelã.",
     price: "R$ 12,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-red-nutella-clean.jpeg",
       alt: "Cookie Red Nutella da Cookies da Mavis"
@@ -204,6 +212,7 @@ export const products: Product[] = [
     spotlightDescription:
       "Massa de chocolate Black, gotas brancas e Oreo por cima: bonito, marcante e ótimo para presentear.",
     price: "R$ 8,00",
+    stock: null,
     image: {
       src: "/images/brand/flavor-oreo-packaged.jpeg",
       alt: "Cookie Oreo embalado da Cookies da Mavis"
@@ -218,6 +227,7 @@ export const combos: Combo[] = [
     name: "Cookitos com Nutella",
     description:
       "6 unidades de cookitos +1 potinho de 30g de Nutella para presentear, dividir ou deixar a mesa mais gostosa.",
+    stock: null,
     image: {
       src: "/images/brand/post-12-DOOFv80DrR0.jpg",
       alt: "Cookitos com Nutella em embalagem da Cookies da Mavis"
@@ -228,6 +238,7 @@ export const combos: Combo[] = [
     name: "Mini cookies para eventos",
     description:
       "Perfeitos para aniversários, lembrancinhas e mesa de doces. Você combina quantidade, sabores e montagem pelo WhatsApp.",
+    stock: null,
     image: {
       src: "/images/brand/post-02-DXFYwe7DzXx.jpg",
       alt: "Mesa de aniversário com mini cookies da Cookies da Mavis"

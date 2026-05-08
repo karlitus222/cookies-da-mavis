@@ -4,6 +4,7 @@ import { useMemo, useState } from "react";
 import { brandInfo } from "@/data/site";
 import { cn } from "@/lib/cn";
 import { formatBrazilianCurrency, parseBrazilianCurrency } from "@/lib/price";
+import { getStockLabel, isAtStockLimit } from "@/lib/stock";
 import { createCartOrderMessage, createWhatsAppLink } from "@/lib/whatsapp";
 import { useCart } from "./CartProvider";
 
@@ -89,58 +90,79 @@ export function CartDrawer() {
         <div className="mt-4 max-h-[36vh] overflow-y-auto pr-1">
           {hasItems ? (
             <div className="grid gap-3">
-              {items.map((item) => (
-                <article
-                  className="rounded-[1.4rem] border border-[var(--color-primary)]/10 bg-white/75 p-3 shadow-sm"
-                  key={item.id}
-                >
-                  <div className="flex items-start justify-between gap-3">
-                    <div>
-                      <h3 className="font-display text-lg font-black leading-tight">
-                        {item.name}
-                      </h3>
-                      {item.price ? (
-                        <p className="mt-1 text-sm font-bold text-[var(--color-muted)]">
-                          {item.price} cada
-                        </p>
-                      ) : null}
-                    </div>
-                    <button
-                      className="text-xs font-black uppercase tracking-[0.12em] text-[var(--color-muted)] underline decoration-[var(--color-accent)]/40 underline-offset-4"
-                      onClick={() => removeItem(item.id)}
-                      type="button"
-                    >
-                      tirar
-                    </button>
-                  </div>
-                  <div className="mt-3 flex items-center justify-between">
-                    <div className="inline-flex items-center rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-1">
+              {items.map((item) => {
+                const stockLabel = getStockLabel(item.stock);
+                const isAtLimit = isAtStockLimit(item.quantity, item.stock);
+
+                return (
+                  <article
+                    className="rounded-[1.4rem] border border-[var(--color-primary)]/10 bg-white/75 p-3 shadow-sm"
+                    key={item.id}
+                  >
+                    <div className="flex items-start justify-between gap-3">
+                      <div>
+                        <h3 className="font-display text-lg font-black leading-tight">
+                          {item.name}
+                        </h3>
+                        {item.price ? (
+                          <p className="mt-1 text-sm font-bold text-[var(--color-muted)]">
+                            {item.price} cada
+                          </p>
+                        ) : null}
+                        {stockLabel ? (
+                          <p className="mt-1 text-xs font-black uppercase tracking-[0.1em] text-[var(--color-muted)]">
+                            {stockLabel}
+                          </p>
+                        ) : null}
+                      </div>
                       <button
-                        aria-label={`Diminuir ${item.name}`}
-                        className="grid h-8 w-8 place-items-center rounded-full bg-white font-black text-[var(--color-primary)] shadow-sm"
-                        onClick={() => decrement(item.id)}
+                        className="text-xs font-black uppercase tracking-[0.12em] text-[var(--color-muted)] underline decoration-[var(--color-accent)]/40 underline-offset-4"
+                        onClick={() => removeItem(item.id)}
                         type="button"
                       >
-                        -
-                      </button>
-                      <span className="min-w-9 text-center text-sm font-black">
-                        {item.quantity}
-                      </span>
-                      <button
-                        aria-label={`Aumentar ${item.name}`}
-                        className="grid h-8 w-8 place-items-center rounded-full bg-[var(--color-primary)] font-black text-white shadow-sm"
-                        onClick={() => increment(item.id)}
-                        type="button"
-                      >
-                        +
+                        tirar
                       </button>
                     </div>
-                    <p className="text-sm font-black text-[var(--color-primary)]">
-                      {item.quantity} un.
-                    </p>
-                  </div>
-                </article>
-              ))}
+                    <div className="mt-3 flex items-center justify-between">
+                      <div className="inline-flex items-center rounded-full border border-[var(--color-primary)]/10 bg-[var(--color-background)] p-1">
+                        <button
+                          aria-label={`Diminuir ${item.name}`}
+                          className="grid h-8 w-8 place-items-center rounded-full bg-white font-black text-[var(--color-primary)] shadow-sm"
+                          onClick={() => decrement(item.id)}
+                          type="button"
+                        >
+                          -
+                        </button>
+                        <span className="min-w-9 text-center text-sm font-black">
+                          {item.quantity}
+                        </span>
+                        <button
+                          aria-label={`Aumentar ${item.name}`}
+                          className={cn(
+                            "grid h-8 w-8 place-items-center rounded-full font-black shadow-sm transition",
+                            isAtLimit
+                              ? "cursor-not-allowed bg-[var(--color-primary)]/20 text-[var(--color-muted)]"
+                              : "bg-[var(--color-primary)] text-white"
+                          )}
+                          disabled={isAtLimit}
+                          onClick={() => increment(item.id)}
+                          type="button"
+                        >
+                          +
+                        </button>
+                      </div>
+                      <p className="text-right text-sm font-black text-[var(--color-primary)]">
+                        {item.quantity} un.
+                        {isAtLimit ? (
+                          <span className="block text-[0.62rem] uppercase tracking-[0.1em] text-[var(--color-muted)]">
+                            limite do estoque
+                          </span>
+                        ) : null}
+                      </p>
+                    </div>
+                  </article>
+                );
+              })}
             </div>
           ) : (
             <div className="rounded-[1.4rem] border border-dashed border-[var(--color-primary)]/20 bg-white/60 p-5 text-center">

@@ -7,17 +7,20 @@ import {
   useState,
   type ReactNode
 } from "react";
+import { isAtStockLimit, isOutOfStock } from "@/lib/stock";
 
 export type OrderableCartProduct = {
   id: string;
   name: string;
   price?: string;
+  stock?: number | null;
 };
 
 export type CartItem = {
   id: string;
   name: string;
   price?: string;
+  stock?: number | null;
   quantity: number;
 };
 
@@ -38,12 +41,18 @@ export function CartProvider({ children }: { children: ReactNode }) {
 
   const addItem = (product: OrderableCartProduct) => {
     setItems((current) => {
+      if (isOutOfStock(product.stock)) {
+        return current;
+      }
+
       const existingItem = current.find((item) => item.id === product.id);
 
       if (existingItem) {
         return current.map((item) =>
           item.id === product.id
-            ? { ...item, quantity: item.quantity + 1 }
+            ? isAtStockLimit(item.quantity, item.stock)
+              ? item
+              : { ...item, quantity: item.quantity + 1 }
             : item
         );
       }
@@ -54,6 +63,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
           id: product.id,
           name: product.name,
           price: product.price,
+          stock: product.stock,
           quantity: 1
         }
       ];
@@ -63,7 +73,11 @@ export function CartProvider({ children }: { children: ReactNode }) {
   const increment = (id: string) => {
     setItems((current) =>
       current.map((item) =>
-        item.id === id ? { ...item, quantity: item.quantity + 1 } : item
+        item.id === id
+          ? isAtStockLimit(item.quantity, item.stock)
+            ? item
+            : { ...item, quantity: item.quantity + 1 }
+          : item
       )
     );
   };

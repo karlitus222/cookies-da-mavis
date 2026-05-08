@@ -6,6 +6,7 @@ import type { Product } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
 import { getProductCategoryMeta } from "@/lib/productCategory";
+import { getStockLabel, isOutOfStock } from "@/lib/stock";
 import { useCart } from "./CartProvider";
 
 type ProductCardProps = {
@@ -17,6 +18,8 @@ export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCart();
   const descriptionId = `${product.id}-description`;
   const categoryMeta = getProductCategoryMeta(product.category);
+  const stockLabel = getStockLabel(product.stock);
+  const productIsOutOfStock = isOutOfStock(product.stock);
 
   return (
     <article className="sweet-card tap-soft group overflow-hidden rounded-[1.7rem] border border-[var(--color-primary)]/10 bg-[var(--color-surface)] shadow-sm transition hover:-translate-y-1.5 hover:shadow-brand sm:rounded-[2rem]">
@@ -41,6 +44,13 @@ export function ProductCard({ product }: ProductCardProps) {
             {product.category}
           </span>
         ) : null}
+        {productIsOutOfStock ? (
+          <div className="absolute inset-0 grid place-items-center bg-[#351114]/45 px-4 text-center backdrop-blur-[2px]">
+            <span className="rounded-full bg-white/95 px-4 py-2 text-xs font-black uppercase tracking-[0.16em] text-[var(--color-primary)] shadow-sm">
+              Indisponivel
+            </span>
+          </div>
+        ) : null}
       </div>
 
       <div className="p-2.5 sm:p-6">
@@ -54,6 +64,18 @@ export function ProductCard({ product }: ProductCardProps) {
             </p>
           ) : null}
         </div>
+        {stockLabel ? (
+          <p
+            className={cn(
+              "mt-1 w-fit rounded-full px-2 py-0.5 text-[0.62rem] font-black uppercase tracking-[0.08em] sm:mt-2 sm:px-3 sm:py-1 sm:text-xs",
+              productIsOutOfStock
+                ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
+                : "bg-white text-[var(--color-muted)] ring-1 ring-[var(--color-primary)]/10"
+            )}
+          >
+            {stockLabel}
+          </p>
+        ) : null}
         <p
           className={cn(
             "mt-2 min-h-0 text-[0.68rem] leading-4 text-[var(--color-muted)] sm:mt-3 sm:line-clamp-none sm:min-h-20 sm:text-base sm:leading-7",
@@ -73,11 +95,17 @@ export function ProductCard({ product }: ProductCardProps) {
           {isExpanded ? "Mostrar menos" : "Ler mais"}
         </button>
         <button
-          className="button-3d tap-soft mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full bg-[var(--color-primary)] px-3 py-2 text-[0.72rem] font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-0.5 sm:mt-5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+          className={cn(
+            "tap-soft mt-3 inline-flex min-h-10 w-full items-center justify-center rounded-full px-3 py-2 text-[0.72rem] font-black transition sm:mt-5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm",
+            productIsOutOfStock
+              ? "cursor-not-allowed bg-[var(--color-primary)]/20 text-[var(--color-muted)]"
+              : "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
+          )}
+          disabled={productIsOutOfStock}
           onClick={() => addItem(product)}
           type="button"
         >
-          Adicionar
+          {productIsOutOfStock ? "Indisponivel" : "Adicionar"}
         </button>
       </div>
     </article>

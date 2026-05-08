@@ -5,6 +5,7 @@ import { useState } from "react";
 import type { Product } from "@/data/site";
 import { assetPath } from "@/lib/assetPath";
 import { cn } from "@/lib/cn";
+import { getStockLabel, isOutOfStock } from "@/lib/stock";
 import { useCart } from "./CartProvider";
 
 type FlavorShowcaseProps = {
@@ -21,6 +22,8 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
   }
   const selectedProduct =
     products.find((product) => product.id === selectedId) ?? initialProduct;
+  const selectedStockLabel = getStockLabel(selectedProduct.stock);
+  const selectedIsOutOfStock = isOutOfStock(selectedProduct.stock);
   const handleSelect = (productId: string) => {
     setSelectedId(productId);
     setAnimationTick((current) => current + 1);
@@ -42,6 +45,13 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
         <span className="absolute left-3 top-3 rounded-full bg-[var(--color-surface)]/90 px-3 py-1 text-[0.65rem] font-black uppercase tracking-[0.16em] text-[var(--color-primary)] backdrop-blur sm:left-5 sm:top-5 sm:text-xs">
           Sabor em destaque
         </span>
+        {selectedIsOutOfStock ? (
+          <div className="absolute inset-0 grid place-items-center bg-[#351114]/45 px-4 text-center backdrop-blur-[2px]">
+            <span className="rounded-full bg-white/95 px-5 py-2 text-xs font-black uppercase tracking-[0.18em] text-[var(--color-primary)] shadow-sm sm:text-sm">
+              Indisponivel
+            </span>
+          </div>
+        ) : null}
       </div>
 
       <div className="mt-4 flex flex-col justify-center sm:mt-5 lg:mt-0">
@@ -67,18 +77,37 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
               {selectedProduct.price}
             </span>
           ) : null}
+          {selectedStockLabel ? (
+            <span
+              className={cn(
+                "rounded-full px-4 py-2 text-xs font-black uppercase tracking-[0.1em]",
+                selectedIsOutOfStock
+                  ? "bg-[var(--color-primary)]/10 text-[var(--color-primary)]"
+                  : "bg-white text-[var(--color-muted)] ring-1 ring-[var(--color-primary)]/10"
+              )}
+            >
+              {selectedStockLabel}
+            </span>
+          ) : null}
           <button
-            className="button-3d tap-soft inline-flex min-h-10 items-center justify-center rounded-full bg-[var(--color-primary)] px-4 py-2 text-xs font-black text-[var(--color-primary-foreground)] transition hover:-translate-y-0.5 sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm"
+            className={cn(
+              "tap-soft inline-flex min-h-10 items-center justify-center rounded-full px-4 py-2 text-xs font-black transition sm:min-h-11 sm:px-5 sm:py-3 sm:text-sm",
+              selectedIsOutOfStock
+                ? "cursor-not-allowed bg-[var(--color-primary)]/20 text-[var(--color-muted)]"
+                : "button-3d bg-[var(--color-primary)] text-[var(--color-primary-foreground)] hover:-translate-y-0.5"
+            )}
+            disabled={selectedIsOutOfStock}
             onClick={() => addItem(selectedProduct)}
             type="button"
           >
-            Adicionar ao carrinho
+            {selectedIsOutOfStock ? "Indisponivel" : "Adicionar ao carrinho"}
           </button>
         </div>
 
         <div className="mobile-pill-scroll mt-5 flex snap-x gap-2 overflow-x-auto pb-1 sm:grid sm:grid-cols-6 sm:gap-3 sm:overflow-visible sm:pb-0">
           {products.map((product) => {
             const isSelected = product.id === selectedProduct.id;
+            const productIsOutOfStock = isOutOfStock(product.stock);
 
             return (
               <button
@@ -87,19 +116,27 @@ export function FlavorShowcase({ products }: FlavorShowcaseProps) {
                   "tap-soft group w-[5.6rem] shrink-0 snap-start overflow-hidden rounded-2xl border bg-[var(--color-surface)] p-1 transition hover:-translate-y-1 hover:shadow-brand sm:w-auto",
                   isSelected
                     ? "animate-selected-flavor border-[var(--color-primary)] border-dashed shadow-brand ring-2 ring-[var(--color-accent)]/30"
-                    : "border-dashed border-[var(--color-primary)]/10"
+                    : "border-dashed border-[var(--color-primary)]/10",
+                  productIsOutOfStock ? "opacity-65" : ""
                 )}
                 key={`${product.id}-${isSelected ? animationTick : "idle"}`}
                 onClick={() => handleSelect(product.id)}
                 type="button"
               >
-                <Image
-                  alt={product.image.alt}
-                  className="aspect-square w-full rounded-xl object-cover transition duration-500 group-hover:scale-110"
-                  height={180}
-                  src={assetPath(product.image.src)}
-                  width={180}
-                />
+                <div className="relative overflow-hidden rounded-xl">
+                  <Image
+                    alt={product.image.alt}
+                    className="aspect-square w-full object-cover transition duration-500 group-hover:scale-110"
+                    height={180}
+                    src={assetPath(product.image.src)}
+                    width={180}
+                  />
+                  {productIsOutOfStock ? (
+                    <span className="absolute inset-x-1 bottom-1 rounded-full bg-white/95 px-1 py-0.5 text-[0.5rem] font-black uppercase tracking-[0.08em] text-[var(--color-primary)] shadow-sm">
+                      Indisponivel
+                    </span>
+                  ) : null}
+                </div>
                 <span className="mt-1 block truncate px-1 pb-1 text-[0.62rem] font-black text-[var(--color-text)] sm:text-xs">
                   {product.name}
                 </span>
